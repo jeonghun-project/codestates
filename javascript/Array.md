@@ -26,11 +26,11 @@ let 변수명 = [ [요소1, 요소2], [요소3, 요소4], ... , [요소5,요소6
 
 ## 배열 메소드
 
-length //길이를 리턴
+	.length //길이를 리턴
 
-push //마지막 인덱스 뒤 인덱스에 요소추가
+	.push //마지막 인덱스 뒤 인덱스에 요소추가
 
-pop //마지막 인덱스 제거
+	.pop //마지막 인덱스 제거
 
 ## 배열의 반복분
 
@@ -38,23 +38,21 @@ for, while문을 통하여 필요한 인덱스에 접근하여 원하는 결과 
 
 ## 배열 판별하기
 
-typeof word ; // object (객체)
+	typeof word ; // object (객체)
 
-typeof [2,4,1] // object (객체)
+	typeof [2,4,1] // object (객체)
 
-Array.isArray(1123) // false
+	Array.isArray(1123) // false
 
-Array.isArray([3,2,4,5]) // true
+	Array.isArray([3,2,4,5]) // true
 
-ArrayisArray!!
+	// ArrayisArray
 
 ## 배열 요소 추가 및 삭제하기
 
 console.table ⇒ 테이플 형식으로 데이터 조회
 
 주요 배열 조작을 위한 메소드
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6a9a80e-cb05-4b6c-8aa1-bcc0d8e6324c/_2021-01-25__9.26.34.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6a9a80e-cb05-4b6c-8aa1-bcc0d8e6324c/_2021-01-25__9.26.34.png)
 
 const로 선언된 array의 경우 재할당은 금지되지만 새로운 요소를 추가하거나 변경 삭제할 수 있다.
 
@@ -65,9 +63,10 @@ const로 선언된 array의 경우 재할당은 금지되지만 새로운 요소
 	return 'arr is empty array';
 }
 ```
-
- arr === [] // false
-
+```jsx
+ 	let arr = [];
+	arr === [] // false
+``` 
 자바스크립트 상에서는 두배열을 "주소가 다른  두 개의 빈 배열" 이라고 생각하기 때문에 false
 
 mutable

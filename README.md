@@ -1,10 +1,10 @@
 # codestates
 
-+ [javascript](./javascript/)
+> [javascript](./javascript/)
   - [calculator](./javascript/calculator/)
   - [twitteler](./javascript/pre-sprint-twittler/)
   - [고차함수](./javascript/고차함수.md)
-- [TIL](./TIL)
+> [TIL](./TIL)
   - [TIL_1_JS_basic](./TIL/TIL_1_JS_basic.md)
   - [TIL_2_JS_조건문](./TIL/TIL_2_JS_조건문.md)
   - [TIL_3_JS_반복문](./TIL/TIL_3_JS_반복문.md)
@@ -14,8 +14,14 @@
   - [TIL_7_JS_Scope,Clousure](./TIL/TIL_7_JS_Scope,Clousure.md)
   - [TIL_8_JS_고차함수](./TIL/TIL_8_JS_고차함수)
   - [TIL_9_JS_spread_syntax](./TIL/TIL_9_JS_spread_syntax.md)
-  - 
 
 
 
-
+<details>
+<summary>javascript</summary>
+<div markdown="1">
+  - [calculator](./javascript/calculator/)
+  - [twitteler](./javascript/pre-sprint-twittler/)
+  - [고차함수](./javascript/고차함수.md)
+</div>
+</details>
