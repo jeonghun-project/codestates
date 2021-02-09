@@ -14,14 +14,13 @@
   - [TIL_7_JS_Scope,Clousure](./TIL/TIL_7_JS_Scope,Clousure.md)
   - [TIL_8_JS_고차함수](./TIL/TIL_8_JS_고차함수)
   - [TIL_9_JS_spread_syntax](./TIL/TIL_9_JS_spread_syntax.md)
-
-
-
-<details>
-<summary>javascript</summary>
-<div markdown="1">
-  - [calculator](./javascript/calculator/)
-  - [twitteler](./javascript/pre-sprint-twittler/)
-  - [고차함수](./javascript/고차함수.md)
-</div>
-</details>
+>[Algorism](./algorism)
+  - [3진법 JS](./algorism/3진법.md)
+  - [123 진법 JS](./algorism/123%20진법.md)
+  - [기능개발 JS](./algorism/기능개발.md)
+  - [두 개 뽑아서 더하기 JS](./algorism/두%20개%20뽑아서%20더하기.md)
+  - [완주하지 못한 선수 JS](./algorism/완주하지%20못한%20선수.md)
+  - [Check If Prefix JS](./algorism/Check%20If%20Prefix.md)
+  - [H-index JS](./algorism/H-index.md)
+  - [MinimumCostOfRopes JS](./algorism/MinimumCostOfRopes.md)
+  - [RunningSumof1dArray JS](./algorism/RunningSumof1dArray.md)
