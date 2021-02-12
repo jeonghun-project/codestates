@@ -21,7 +21,6 @@ function calculate(n1, operator, n2) {
   }
   return String(result);
 } // 연산이 끝난 값 
-  
 
 buttons.addEventListener('click', function (event) {
   // 버튼을 눌렀을 때 작동하는 함수입니다.
@@ -44,13 +43,16 @@ buttons.addEventListener('click', function (event) {
       }
       console.log('숫자 ' + buttonContent + ' 버튼');
     }
+
     if (action === 'operator') {
         operator.textContent = buttonContent;
       console.log('연산자 ' + buttonContent + ' 버튼');
     }
+
     if (action === 'decimal') {
       // console.log('소수점 버튼');
     }
+
     if (action === 'clear') {
       firstOperend.textContent = 0;
       secondOperend.textContent = 0;
@@ -79,42 +81,73 @@ buttons.addEventListener('click', function (event) {
 
   // ! 여기서부터 intermetiate & advanced 과제룰 풀어주세요.
   if (target.matches('button')) {
-    if(action === "number") {
-      if(firstNum === undefined) {
-        firstNum = buttonContent;
-      } else if (firstNum !== undefined) {
+    if (action === 'number') {
+      if((display.textContent === '0' || firstNum === undefined) && display.textContent !== '0.') {
+        firstNum = parseInt(buttonContent);
+        display.textContent = firstNum;
+      } else if((Number.isInteger(firstNum) === false && firstNum > 0) || display.textContent === '0.') {
         firstNum += buttonContent;
+        display.textContent = firstNum;
+      } else if(firstNum > 0 ) {
+        firstNum *= 10;
+        firstNum += parseInt(buttonContent);
+        display.textContent = firstNum;
       }
-      if(firstNum !== undefined) display.textContent = firstNum;
-      previousKey = 'number';
     }
-    if(action === "decimal") {
-      if(firstNum === undefined) display.textContent = '0';
-      if(!display.textContent.includes('.')) display.textContent += buttonContent;
-      firstNum = display.textContent;
-    }
-    if(action === "operator") {
-      if (previousNum !== undefined && firstNum !== undefined && previousKey !== "oprator") {
-        previousNum = calculate (previousNum, intermediateOperator, firstNum);
-        firstNum = undefined;
-      } else if (previousNum === undefined) {
-        previousNum = firstNum;
-        firstNum = undefined;
-      }
-      intermediateOperator = buttonContent;
-      previousKey = "operator";
-    }
-    if(action === "clear") {
-      firstNum = undefined;
-      intermediateOperator = undefined;
-      previousNum = undefined;
-      display.textContent = "0";
-    }
-    if(action === "calculate") {
-      if(firstNum === undefined) firstNum = previousNum;
-      if(intermediateOperator !== undefined) {
-        previousNum = calculate (previousNum, intermediateOperator, firstNum);
+    if (action === 'operator') {
+      if (firstNum === undefined) {
+        intermediateOperator = buttonContent;
         display.textContent = previousNum;
+      } else if(previousKey === undefined && previousNum !== undefined) {
+        previousNum = calculate(previousNum, intermediateOperator, firstNum);
+        display.textContent = previousNum;
+        intermediateOperator = buttonContent;
+        firstNum = undefined;
+      }
+      else if(previousKey === undefined){
+        intermediateOperator = buttonContent;
+        previousNum = firstNum; 
+        display.textContent = previousNum;
+        firstNum = undefined;
+      } else if (previousKey !== undefined) {
+        intermediateOperator = buttonContent;
+        previousNum = previousKey; 
+        firstNum = undefined;
+      } else if (intermediateOperator !== undefined) {
+        intermediateOperator = buttonContent;
+      } 
+    }
+    if (action === 'decimal') {
+      if(display.textContent === '0') {
+        display.textContent = '0' + '.'
+        firstNum =display.textContent;
+      } else if (firstNum > 0 && Number.isInteger(firstNum) === true){
+        firstNum = String(firstNum) + '.';
+        display.textContent = firstNum;
+      } else if (firstNum === undefined) {
+        firstNum ='0.'
+        display.textContent = firstNum;
+      }
+    }
+    if (action === 'clear') {
+      previousKey = undefined;
+      display.textContent = '0';
+      firstNum = 0;
+      previousNum = undefined;
+      intermediateOperator = undefined;
+    }
+    if (action === 'calculate') {
+      if(previousNum !== undefined) {
+        if (firstNum === undefined) {
+          previousKey = calculate(previousNum, intermediateOperator, previousNum)
+        } else {
+          previousKey = calculate(previousNum, intermediateOperator, firstNum);
+        }
+        display.textContent = previousKey;
+        previousNum = undefined;
+      } else if (intermediateOperator !== undefined) {
+        previousKey = calculate(previousKey, intermediateOperator, firstNum)
+        display.textContent = previousKey;
       }
     }
   }
