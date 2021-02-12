@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>twittler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="data.js"></script>
+</head>
+<body>
+  <!-- 여기에 HTML 구조를 작성하세요. 아래 코드는 예제이며, 얼마든지 바꿀 수 있습니다 -->
+  
+  <div id="container">
+    <div id="outframe">
+
+      <div id="menu">
+
+        <div class="menubar">
+          <ul class="menulist">
+            <li class="menuname">home</li>
+            <li class="menuname">explore</li>
+            <li class="menuname">notification</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div id="main">
+        <div id="headerframe">
+          <div id="title">
+            <span>twitter</span>
+          </div>
+        </div>
+        <div class="line"></div>
+
+        <div id="inputframe">
+          <div id="input">
+
+            <div class="imgframe">
+              <div class="profileimg"></div>
+            </div>
+
+            <div id="twittareaframe">
+              <input class="inputusername" placeholder="name" type="text"></input>
+              <textarea class="twittextinput contents" placeholder="What's happen?"></textarea>
+              <div class="line"></div>
+
+              <div id="twittbuttonframe">
+                <div class="buttonframe">
+                  <button class="twittbutton">
+                    <div class="buttontext">
+                      트윗
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <ul class="maineelement">
+          <li class="articleframe">
+            <div class="imgframe"> 
+              <div class="profileimg"></div>
+            </div>
+            <div class="contentframe">
+              <div class="article">
+                <div class="editprofile"> none</div>
+                <div class="content">와 이게 트윗이란 건가 손코딩으로 트윗작성하기 너무 어렵고 CSS주말 내내 만든거 실화냐? </div>
+              </div>
+              <div class="articlebuttonframe">
+                  <div class="dateframe"></div>
+              </div>
+            </div> 
+          </li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  
+</body>
+</html>
