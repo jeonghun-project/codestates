@@ -24,3 +24,5 @@
   - [H-index JS](./algorism/H-index.md)
   - [MinimumCostOfRopes JS](./algorism/MinimumCostOfRopes.md)
   - [RunningSumof1dArray JS](./algorism/RunningSumof1dArray.md)
+  - [Kids With the Greatest Number of Candies JS](./algorism/Kids%20With%20the%20Greatest%20Number%20of%20Candies%20JS.md)
+  - [Make The String Great JS](algorism/Make%20The%20String%20Great%20JS.md)
