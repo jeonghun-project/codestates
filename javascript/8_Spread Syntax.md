@@ -1,45 +1,16 @@
-# SpreadSyntax
+ d# SpreadSyntax
 
 배열의 각요소를 펼쳐서 전개한다.
 
-## ... 펼치고 싶은 array
-
-`...arg` rest parameter, rest syntax 라고 부릅니다.
-
-남아있는 모든 인자를 하나의 배열에 담는다.
-
-객체를 펼칠시에 주의가 필요하다
-
-객체의 경우 특별한 순서가 없기 때문에!
-
-spread Syntax를 함수의 **마지막 인자**로 전달하는 것이 rest parameter다.
-
 ```jsx
-const f = (a, b, ...c) => { //마지막 파라미터만 Rest parameter로 전달 된다
-  //
-}
+let arr = [3, 4, 5]
+console.log(...arr); // 3,4,5
 ```
 
-Optinal spreading ...falsy ...turety
+### ... 펼치고 싶은 array
 
-```jsx
-...turety && { djlfk : twer, wert: klaejrt } // 전개 구문 펼처짐
-...falsy || { djlfk : twer, wert: klaejrt } // 전개 구문 펼처짐
 
-// 객체에도 적용 가능
-
-const user = { id: 123, name: 'MyName' }; 
-const password = 'pwd'; 
-const userWithPassword = { ...user, id: 100, ...(password && { password }) 
-//조건 password가 존재한다면 객체 리터럴을 이용하여 객체 생성후 객체 추가 } 
-
-userWithPassword   // { id: 100, name: 'MyName', password: 'pwd' }
-
-```
-
-둘다 뭔가를 전개하여 array 형식으로 전달 하는 것인데
-
-객체에서의 Spread Syntax
+## Object(객체) Spread Syntax
 
 Object에서의 Spread syntax는 property 즉, key: value 를 전개한다
 
@@ -60,6 +31,29 @@ const renamed = ({ ID, ...obj }) => ({ id: ID, ...obj });
 const user = { ID: 123, name: 'MyName' }; 
 renamed(user); // { id: 123, name: 'MyName' }
 ```
+
+
+## Optional spreading ...falsy ...truthy
+선택적 전개 구문
+아래 코드를 보면서 이해하자
+```jsx
+...truthy && { djlfk : twer, wert: klaejrt } // 전개 구문 펼처짐
+...falsy || { djlfk : twer, wert: klaejrt } // 전개 구문 펼처짐
+
+// 객체에도 적용 가능
+
+const user = { id: 123, name: 'MyName' }; 
+const password = 'pwd'; 
+const userWithPassword = { ...user, id: 100, ...(password && { password }) 
+//조건 password가 존재한다면 객체 리터럴을 이용하여 객체 생성후 객체 추가 } 
+
+userWithPassword   // { id: 100, name: 'MyName', password: 'pwd' }
+
+```
+
+위 예제에서는 truthy가 ture한 값을 가졌다면 우변의 객체를 리턴하고,
+리턴한 객체가 Spread Syntax에 의하여 전개된다.
+
 
 ## rest parameter
 
@@ -85,7 +79,7 @@ myFun("one", "two", "three", "four", "five", "six");
 
 이는 argument 객체와는 차이가 있다.
 
-argument 객체는 배열이 아니다
+argument 객체는 배열이 아니다. 단지, **iterable**인 객체인 것이다.
 
 ```jsx
 function f(a, b) {
