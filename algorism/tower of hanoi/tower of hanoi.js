@@ -8,9 +8,11 @@ function towerOfHanoi(num) {
 		let spare = hanoisparePeg(from, to);
 		hanoi(num - 1, from, spare);
 		hanoimove(arr, from, to);
+		console.log(arr);
 		hanoi(num - 1, spare, to);
 	};
-	hanoi(temp, 0, 1);
+
+	hanoi(temp, 0, 2);
 };
 
 
