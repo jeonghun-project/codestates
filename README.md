@@ -22,6 +22,8 @@
   - [TIL_7_JS_Scope,Clousure](./TIL/TIL_7_JS_Scope,Clousure.md)
   - [TIL_8_JS_고차함수](./TIL/TIL_8_JS_고차함수)
   - [TIL_9_JS_spread_syntax](./TIL/TIL_9_JS_spread_syntax.md)
+  - [TIL_10_3주차정리](./TIL/TIL_10_3주차정리.md)
+  - [TIL_11_Fetch](./TIL/TIL_11_Fetch.md)
 >[Algorism](./algorism)
   - [3진법 JS](./algorism/3진법.md)
   - [123 진법 JS](./algorism/123%20진법.md)
