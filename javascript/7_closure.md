@@ -1,5 +1,10 @@
 # Closure(폐쇠)
 
+- [Closure(폐쇠)](#closure폐쇠)
+    - [유용한 클로저](#유용한-클로저)
+    - [클로저를 이용해서 프라이빗 메소드(private method) 흉내 내기](#클로저를-이용해서-프라이빗-메소드private-method-흉내-내기)
+    - [clousure Scope chain](#clousure-scope-chain)
+
 변수의 유효범위에 대한 이해가 필요하다(Lexical scoping)
 
 Javascript는 함수도 리턴할 수 있다. ⇒ 함수를 포함하고 있는 상태인 Closure (함수 공장)

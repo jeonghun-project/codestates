@@ -30,4 +30,4 @@ ln -s <TargetFile> <LinkFilename>
 
 설치하다 만난 에러
 
-[zsh_compinit](./../ErrorCase/zsh_compinit.md)
+[zsh_compinit](../ErrorCase/zsh_compinit.md)

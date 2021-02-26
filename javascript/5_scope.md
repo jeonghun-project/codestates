@@ -1,4 +1,10 @@
 # Scope
+- [Scope](#scope)
+	- [Global Scope 전역 변수](#global-scope-전역-변수)
+	- [Function Scope VS Block Scope](#function-scope-vs-block-scope)
+		- [**var 키워드(Function level Scope) VS. let 키워드 (Block level Scope) (ES6 추가)**](#var-키워드function-level-scope-vs-let-키워드-block-level-scope-es6-추가)
+	- [const 키워드 (ES6 추가)](#const-키워드-es6-추가)
+	- [window 객체](#window-객체)
 
 변수 접근 규칙에 따른 유효 범위
 

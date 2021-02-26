@@ -1,4 +1,9 @@
- d# SpreadSyntax
+- [SpreadSyntax](#spreadsyntax)
+  - [Object(객체) Spread Syntax](#object객체-spread-syntax)
+  - [Optional spreading ...falsy ...truthy](#optional-spreading-falsy-truthy)
+  - [rest parameter](#rest-parameter)
+
+ # SpreadSyntax
 
 배열의 각요소를 펼쳐서 전개한다.
 
@@ -7,7 +12,7 @@ let arr = [3, 4, 5]
 console.log(...arr); // 3,4,5
 ```
 
-### ... 펼치고 싶은 array
+... 펼치고 싶은 array
 
 
 ## Object(객체) Spread Syntax
