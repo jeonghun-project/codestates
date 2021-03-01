@@ -26,7 +26,7 @@ node는 자료구조에서는 데이터나 기능을 의미할 것이고 edge는
 
 해당 자료를 참고하였다. [https://kyungseop.tistory.com/17](https://kyungseop.tistory.com/17)
 
-![node](./src/node.png = 250x)
+![node](./src/node.png)
 
 우리에게 1, 2 3 이라는 노드가 주어지고, 어떠한 규칙에 의해 이 노드들을 조회아여야한다고 생각해보자.
 
@@ -36,9 +36,9 @@ node는 자료구조에서는 데이터나 기능을 의미할 것이고 edge는
 
 이를 어떻게 할당하고 읽게 될까?
 
-![node2](./src/node1.png = 250x)
+![node2](./src/node1.png)
 
-![node3](./src/node2.png = 250x)
+![node3](./src/node2.png)
 
 서로 연결된 간선을 통해 각각의 연결을 표현하면 이렇게 차트를 통해 표현할 수 있다.
 이를 통해 시작을 1에서 시작하면 1 → 2 → 3
@@ -49,9 +49,9 @@ node는 자료구조에서는 데이터나 기능을 의미할 것이고 edge는
 
 여기에 가중치를 할당하여 순회 할 수 있도록 한다면.
 
-![node3](./src/node3.png = 250x)
+![node3](./src/node3.png)
 
-![node4](./src/node4.png = 250x)
+![node4](./src/node4.png)
 
 이렇게 거리를 가중치라고 생각하고 노드들을 연결한다면 짧은 거리가 우선순위가 높다고 생각하고 조회 해보도록 하자.
 
