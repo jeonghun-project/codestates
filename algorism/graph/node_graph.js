@@ -73,21 +73,21 @@ class Tree {
 	};
 
 	contain ( ele, data = this) {
-		this.level = this.level||  0;
-
+		data.level = data.level ||  0;
+		debugger;
 		if(data.node === ele) return data.level;
 
-		if(ele > this.node) {
-			if(this.right) {
-				this.right.level = this.level + 1;
-				this.contain(ele, this.right);
+		if(ele > data.node) {
+			if(data.right) {
+				data.right.level = data.level + 1;
+				data.contain(ele, data.right);
 			} else {
 				return false;
 			}
 		} else {
-			if(this.left) {
-				this.left.level = this.level + 1;
-				this.contain(ele, this.left);
+			if(data.left) {
+				data.left.level = data.level + 1;
+				data.contain(ele, data.left);
 			} else {
 				return false;
 			}
