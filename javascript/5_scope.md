@@ -79,8 +79,7 @@ block = 중괄호로 시작하고, 끝나는 단위
 
 var은 함수 단위로 자신만의 Scope를 가집니다.
 
-1. [함수 레벨 스코프(Function-level scope)](https://poiemaweb.com/js-scope#3-function-scope)
-    - 전역 변수의 남발
+1. 함수 레벨 스코프(Function-level scope)
     - for loop 초기화식에서 사용한 변수를 for loop 외부 또는 전역에서 참조할 수 있다.
 2. var 키워드 생략 허용
     - 의도하지 않은 변수의 전역화
