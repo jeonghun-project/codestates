@@ -1,4 +1,3 @@
-
 > [Javascript](./javascript)
   - [calculator](./javascript/claculator/)
   - [twittler](./javascript/pre-sprint-twittler/)
@@ -12,6 +11,9 @@
   - [6. 고차함수](./javascript/6_고차함수.md)
   - [7. closure](./javascript/7_closure.md)
   - [8. spreadsyntax](./javascript/8_Spread%20Syntax.md)
+  - [9. Arrow function](./javascript/9_Arrow%20function.md)
+  - [10. 구조 분해 할당 (destructuring-assignment)](./javascript/10_구조%20분해%20할당%20(destructuring-assignment).md)
+  - [11. class](./javascript/11_class.md)
 > [TIL](./TIL)
   - [TIL_1_JS_basic](./TIL/TIL_1_JS_basic.md)
   - [TIL_2_JS_조건문](./TIL/TIL_2_JS_조건문.md)
@@ -23,7 +25,11 @@
   - [TIL_8_JS_고차함수](./TIL/TIL_8_JS_고차함수)
   - [TIL_9_JS_spread_syntax](./TIL/TIL_9_JS_spread_syntax.md)
   - [TIL_10_3주차정리](./TIL/TIL_10_3주차정리.md)
-  - [TIL_11_Fetch](./TIL/TIL_11_Fetch.md)
+  - [TIL_11_Fetch](./TIL/TIL_11_Fetch.md)\
+  - [TIL_12_homebrew](./TIL/TIL_12_homebrew.md)
+  - [TIL_13_ES6+node.js](./TIL/TIL_13_ES6+node.js.md)
+  - [TIL_14_ES6_2](./TIL/TIL_14_ES6_2.md)
+  - [TIL_15_OOP](./TIL/TIL_15_OOP.md)
 >[Algorism](./algorism)
   - [3진법 JS](./algorism/3진법.md)
   - [123 진법 JS](./algorism/123%20진법.md)
