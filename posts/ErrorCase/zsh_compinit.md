@@ -1,3 +1,5 @@
+# zsh compinit: insecure directories and files, run compaudit for list.
+
 안전하지 않은 항목에 대한 오류
 
 zsh의 경로가 엉켜서 생성된 문제로 보여진다.

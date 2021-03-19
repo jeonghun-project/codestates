@@ -1,4 +1,4 @@
-## chmod
+# chmod
 
 기본적인 shell script 커멘드로서 파일의 권한을 설정할 때 사용하는 명령어이다.
 

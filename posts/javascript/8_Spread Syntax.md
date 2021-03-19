@@ -1,9 +1,9 @@
+ # SpreadSyntax
+
 - [SpreadSyntax](#spreadsyntax)
   - [Object(객체) Spread Syntax](#object객체-spread-syntax)
   - [Optional spreading ...falsy ...truthy](#optional-spreading-falsy-truthy)
   - [rest parameter](#rest-parameter)
-
- # SpreadSyntax
 
 배열의 각요소를 펼쳐서 전개한다.
 

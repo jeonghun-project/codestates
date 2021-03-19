@@ -1,8 +1,6 @@
-# 1. 구조 분해 할당 (destructuring-assignment)
+# 10. 구조 분해 할당 (destructuring-assignment)
 
-생성일: 2021년 2월 24일 오후 6:48
-
-- [1. 구조 분해 할당 (destructuring-assignment)](#1-구조-분해-할당-destructuring-assignment)
+- [10. 구조 분해 할당 (destructuring-assignment)](#10-구조-분해-할당-destructuring-assignment)
 - [2. destructuring-assignment](#2-destructuring-assignment)
   - [2.1. 기본 용법](#21-기본-용법)
   - [2.2. Array](#22-array)

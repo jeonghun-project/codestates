@@ -1,11 +1,11 @@
 # 원시타입(primitive)
 
 - [원시타입(primitive)](#원시타입primitive)
-	- [원시타입 데이터(primitive type data) 종류](#원시타입-데이터primitive-type-data-종류)
-	- [특징](#특징)
+  - [원시타입 데이터(primitive type data) 종류](#원시타입-데이터primitive-type-data-종류)
+  - [특징](#특징)
 - [참조타입(reference)](#참조타입reference)
-	- [참조타입 데이터(reference type data)](#참조타입-데이터reference-type-data)
-	- [특징](#특징-1)
+  - [참조타입 데이터(reference type data)](#참조타입-데이터reference-type-data)
+  - [특징](#특징-1)
 
 ## 원시타입 데이터(primitive type data) 종류
 

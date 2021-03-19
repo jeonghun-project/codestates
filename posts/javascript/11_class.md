@@ -1,17 +1,16 @@
+# class
 
-# 1. class
-
-- [1. class](#1-class)
-	- [1.1. class란?](#11-class란)
-	- [1.2. instance](#12-instance)
-	- [1.3. constructor](#13-constructor)
-		- [1.3.1. 클래스 필드](#131-클래스-필드)
-		- [1.3.2. static](#132-static)
+- [class](#class)
+  - [1.1. class란?](#11-class란)
+  - [1.2. instance](#12-instance)
+  - [1.3. constructor](#13-constructor)
+    - [1.3.1. 클래스 필드](#131-클래스-필드)
+    - [1.3.2. static](#132-static)
 - [2. getter && setter](#2-getter--setter)
-	- [2.1. getter](#21-getter)
+  - [2.1. getter](#21-getter)
 - [3. 상속 (Inheritance)](#3-상속-inheritance)
-	- [3.1. extends](#31-extends)
-	- [3.2. super](#32-super)
+  - [3.1. extends](#31-extends)
+  - [3.2. super](#32-super)
 
 ES6에 들어서서 완벽한 객체 지향 프로그래밍이 되기 위해 등장하였다. 자바스크립트는 강력한prototype 기반 객체지향 프로그래밍 능력을 가지지만 갑을논박이 많았지만 class의 등장으로 생성자 함수를 통해 돌아가던 자바스크립트 환경을 조금더 객체지향 프로그래밍으로 인정 받을 수 있게 만들어 주었다.
 
