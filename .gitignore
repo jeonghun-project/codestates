@@ -1,3 +1,5 @@
-.DS_*
+/.DS_*
 test.js
-.gitignore
+/.gitignore
+/node_modules
+/post/.*
