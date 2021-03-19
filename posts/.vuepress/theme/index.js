@@ -1,4 +1,4 @@
 module.exports = {
   extend: '@vuepress/theme-default',
-  footer: '/layouts/footer'
+  GlobalLayout: '/layouts/GlobalLayout'
 }

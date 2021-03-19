@@ -1,8 +1,8 @@
-# JeongHun;s Dev Log
+# JeongHun's Dev Log
 
 ## Today I Learned
 
-**Learning-thing;s**는 진짜 코드에 **ㅋ**자도 모르는 시절부터 시작되었다.
+**Learning-things**는 진짜 코드에 **ㅋ** 자도 모르는 시절부터 시작되었다.
 
 점차 배우고 알아가고 깨닫는 일이 많아지는 것을 빠짐없이 기록하자.
 
