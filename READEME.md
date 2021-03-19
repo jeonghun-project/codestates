@@ -1,0 +1,11 @@
+# JeongHun;s Dev Log
+
+## Today I Learned
+
+**Learning-thing;s**는 진짜 코드에 **ㅋ**자도 모르는 시절부터 시작되었다.
+
+점차 배우고 알아가고 깨닫는 일이 많아지는 것을 빠짐없이 기록하자.
+
+- 42-seoul 본 과정도 못 가보고 탈락함 20.11
+- 포기하지 않고 codestates 시작 21.01
+- 
