@@ -5,15 +5,14 @@ module.exports = {
   title: 'Hoon\'s devlog',
   description: 'Hoon\'s devlog',
   base: '/Learning-things/',
+  dest: 'post',
   themeConfig: {
     logo: '',
     smoothScroll: true,
     nav: [{
       text: 'GitHub',
       link: 'https://github.com/jeonghun-project/Learning-things'
-    },
-    { text: 'Home', link: '/' }
-  ],
+    }],
     smoothScroll: true,
     sidebar: [
       {
