@@ -1,9 +1,9 @@
 # Closure(폐쇠)
 
 - [Closure(폐쇠)](#closure폐쇠)
-    - [유용한 클로저](#유용한-클로저)
-    - [클로저를 이용해서 프라이빗 메소드(private method) 흉내 내기](#클로저를-이용해서-프라이빗-메소드private-method-흉내-내기)
-    - [clousure Scope chain](#clousure-scope-chain)
+  - [유용한 클로저](#유용한-클로저)
+  - [클로저를 이용해서 프라이빗 메소드(private method) 흉내 내기](#클로저를-이용해서-프라이빗-메소드private-method-흉내-내기)
+  - [clousure Scope chain](#clousure-scope-chain)
 
 변수의 유효범위에 대한 이해가 필요하다(Lexical scoping)
 
@@ -34,7 +34,7 @@ let out = outerfn();
 
 결론적으로 오직 하나의 메소드를 가지고 있는 객체를 일반적으로 사용하는 모든 곳에 클로저를 사용할 수 있다. - MDN
 
-### 유용한 클로저
+## 유용한 클로저
 
 동적 웹페이지를 구현 할때 기능적인 함수를 내장하여 편리하게 사용할 수 있다.
 
@@ -46,7 +46,7 @@ function makeSizer(size) {
 }
 ```
 
-### 클로저를 이용해서 프라이빗 메소드(private method) 흉내 내기
+## 클로저를 이용해서 프라이빗 메소드(private method) 흉내 내기
 
 [모듈 패턴](https://yubylab.tistory.com/entry/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4-for-javascript-Module-Pattern)으로 이용할 수 있다
 
@@ -115,7 +115,7 @@ alert(counter2.value()); /* 0 */
 
 그렇다면 clousure의 스코프 체인을 알아볼 필요가 있다
 
-### clousure Scope chain
+## clousure Scope chain
 
 모든 클로저에는 세가지 스코프(범위)가 있다.
 

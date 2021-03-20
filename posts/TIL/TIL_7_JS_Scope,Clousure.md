@@ -1,4 +1,4 @@
-# TIL_7_JS_Scope,Clousure
+# TIL Scope,Clousure
 
 [Scope / Clousure](https://www.notion.so/Scope-Clousure-5b60bd37f02d4432a10364eb50eac8d2) 
 

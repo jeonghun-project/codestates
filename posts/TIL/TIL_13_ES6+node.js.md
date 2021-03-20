@@ -1,4 +1,4 @@
-# TIL 13. ES6+node.js
+# TIL ES6+node.js
 
 # 오늘의 한 일
 

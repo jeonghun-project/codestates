@@ -1,4 +1,4 @@
-# TIL 4. HTML,CSS
+# TIL HTML,CSS
 
 ---
 

@@ -1,4 +1,4 @@
-# TIL 3. JS 반복문(iteration)
+# TIL 반복문(iteration)
 
 ---
 

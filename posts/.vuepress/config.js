@@ -4,11 +4,10 @@ let {getArticles} = require(path.resolve('posts/.vuepress/sidebar'))
 module.exports = {
   title: 'Hoon\'s devlog',
   description: 'Hoon\'s devlog',
-  logo: '/public/logo_hoon\'s.png',
   base: '/Learning-things/',
   dest: 'post',
   themeConfig: {
-    logo: '',
+    logo: 'logo_hoon\'s_full.png',
     smoothScroll: true,
     nav: [{
       text: 'GitHub',

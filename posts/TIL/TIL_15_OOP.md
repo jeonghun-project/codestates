@@ -1,6 +1,6 @@
-# TIL_15_OOP
+# TIL OOP
 
-- [TIL_15_OOP](#til_15_oop)
+- [TIL OOP](#til-oop)
 - [오늘의 한 일](#오늘의-한-일)
 - [prototype](#prototype)
   - [[[Prototype]] / Prototype property](#prototype--prototype-property)

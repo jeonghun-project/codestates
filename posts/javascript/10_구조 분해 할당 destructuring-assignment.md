@@ -1,6 +1,6 @@
-# 10. 구조 분해 할당 (destructuring-assignment)
+# 구조 분해 할당 (destructuring-assignment)
 
-- [10. 구조 분해 할당 (destructuring-assignment)](#10-구조-분해-할당-destructuring-assignment)
+- [구조 분해 할당 (destructuring-assignment)](#구조-분해-할당-destructuring-assignment)
 - [2. destructuring-assignment](#2-destructuring-assignment)
   - [2.1. 기본 용법](#21-기본-용법)
   - [2.2. Array](#22-array)

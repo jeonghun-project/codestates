@@ -1,4 +1,4 @@
-# TIL_5_calculater
+# TIL calculater
 
 계산기 구현하기 나만에 계산기를 구현하자
 

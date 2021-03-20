@@ -1,4 +1,4 @@
-# TIL_8_JS_고차함수
+# TIL 고차함수
 
 First-class citizen
 

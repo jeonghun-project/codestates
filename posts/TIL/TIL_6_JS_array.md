@@ -1,4 +1,4 @@
-# TIL_6_JS_array
+# TIL array
 
 typeof를 통해 null 값을 입력시 object가 나온다 null 값을 판별하기 우하여 무엇이 필요할까?
 
