@@ -6,6 +6,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+.test*
 
 # Icon must end with two \r
 Icon
@@ -34,7 +35,7 @@ Temporary Items
 # Recommended template: Node.gitignore
 
 node_modules/
-post/
+post/*
 npm-debug.log
 yarn-error.log
 
