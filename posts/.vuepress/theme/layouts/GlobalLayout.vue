@@ -1,23 +1,9 @@
-
-
-
-
 <template>
   <div id="GlobalLayout">
     <component :is="layout" />
-    <header class="siteHeader"><img src="main poto.jpeg" /></header>
     <footer class="siteFooter">
       &copy; Devlog from jeong
     </footer>
-  </div>
-</template>
-
-
-<template>
-  <div id="global-layout">
-    <header><h1>Header</h1></header>
-    <component :is="layout"/>
-    <footer><h1>Footer</h1></footer>
   </div>
 </template>
 
