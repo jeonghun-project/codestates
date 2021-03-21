@@ -1,0 +1,21 @@
+{
+  "name": "Learning-things",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev posts",
+    "build": "vuepress build posts",
+    "commit": "vuepress build posts && git add post -f && git commit -m 'Subtree commit'",
+    "deploy": "git push origin `git subtree split --prefix post main`:gh-pages --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeonghun-project/Learning-things.git"
+  },
+  "dependencies": {
+    "directory-tree": "^2.2.7",
+    "vuepress": "^1.8.2"
+  }
+}
