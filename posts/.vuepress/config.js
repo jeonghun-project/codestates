@@ -31,9 +31,9 @@ module.exports = {
         children: getArticles('algorism')
       },
       {
-        title: 'noodeJS',
+        title: 'nodeJS',
         collapsable: true,
-        children: getArticles('noodeJS')
+        children: getArticles('nodeJS')
       },
       {
         title: 'ShellScript',
