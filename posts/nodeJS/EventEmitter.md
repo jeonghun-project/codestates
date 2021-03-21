@@ -3,9 +3,40 @@
 **Class: EventEmitter**
 
 `EventEmitter`는 `Event module`에 의하여 정의 되어져 있습니다.
+이 또한 [공식문서](https://nodejs.org/api/events.html#events_emitter_removelistener_eventname_listener)를 살펴보는 것을 추천한다.
 
 ```js
 const EventEmitter = require('events');
+```
+
+*`EventEmitter`는 기본적으로 등록 된 모든 `Listener`를 동기적으로 호출한다. **이때 return은 무시되고 버려진다.** `Emitter`에 method와 `Listener`를 착각하지 말자
+
+
+*but,* 하지만 **`EventEmitter` 자체는 비동기적이다.**
+이는 **중요한 개념**이다.
+
+
+필요할 경우에는 비동기적 호출을 위하여 `setImmediate()` 혹은 `process.nextTick()` method를 사용하여 비동기 작업으로 전환 할 수 있다.
+
+
+## 여기서도 this
+
+일반 `listener` 함수가 호출 될 때 `this`에 경우 의도적으로 `EventEmitter instance`를 attached 한단다.
+
+```js
+const myEmitter = new MyEmitter();
+myEmitter.on('event', function(a, b) {
+  console.log(a, b, this, this === myEmitter);
+  // Prints:
+  //     a b
+  //     MyEmitter {
+  //     domain: null,
+  //     _events: { event: [Function] },
+  //     _eventsCount: 1,
+  //     _maxListeners: undefined }
+  //     true
+});
+myEmitter.emit('event', 'a', 'b');
 ```
 
 ### Event: 'newListener'

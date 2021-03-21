@@ -1,14 +1,14 @@
 # Node js 내장 서버
 
 Node.js의 경우 내장된 웹서버를 지원한다.
-
 Node.js 공식 Documents에 자세한 내용이 나와있어 공부를 위해 다시 읽으면 옮겨보았다.
-
 자세한 내용과 본문을 그대로 옮겨둔 내 글보다는 원글을 천천히 이해해 보는것을 추천한다.
 
 [HTTP 트랜젝션 해부](https://nodejs.org/ko/docs/guides/anatomy-of-an-http-transaction/)
 
 `EventEmitters`와 `Stream`에 대한 이해가 필요하다는데 일단은 이해가 없는 상태에서 만들수는 있었다. 몇 가지 API 만 그때 그때 참고하면서 만들어 보았다.
+
+다시 정리하면서 필요한 부분만 따로 정리하여 post로 만들었으니 참고
 
 ## 서버 생성
 ```js
@@ -37,7 +37,7 @@ HTTP 요청이 들어오면 Node가 트랜잭션을 다루기 위한 `request` �
 `Node.js`에서 제공하는 문서를 살펴보면 `request` 객체는 `ReadableStream interface`를 구현하고 `response` 객체는 `ServerResponse interface`를 구현하며 이는 `WritableStream`이다.
 `Stream`이 무엇인지 잠시 알아보면,
 
-[Stream](./Stream.md)
+**[Stream에 대한 정리보기](https://jeonghun-project.github.io/Learning-things/nodeJS/Stream.html)**
 
 해당 문서를 간략하게 읽어보면
 `Stream`은 추상인터페이스 이면서 `data`를 다루기 위한 인터페이스이고
@@ -82,7 +82,7 @@ request.on('data', (chunk) => {
 
 `request` 객체가 `ReadableStream`인 `EventEmitter`이기에 Error가 발생하였을 때 `EventEmitter`처럼 동작합니다.
 
-[EventEmitter](./EventEmitter.md)
+**[EventEmitter에 대한 정리보기](https://jeonghun-project.github.io/Learning-things/nodeJS/EventEmitter.html)**
 
 오류가 발생하면 Stream에서 `'error'`이벤트가 발생하면서 오류를 전달합니다.
 
@@ -149,12 +149,12 @@ response.end('<html><body><h1>Hello, World!</h1></body></html>');
 
 > 주의 : 바디에 데이터 청크를 작성하기 전에 상태 코드와 헤더를 설정해야 합니다. HTTP 응답에서 바디 전에 헤더가 존재해야 하기 때문에
 
-- [x] 요청 핸들러 함수로 HTTP 서버의 인스턴스를 생성하고 특정 포트로 서버를 열 수 있습니다.
-- [x] request 객체에서 헤더, URL, 메서드, 바디 데이터를 가져올 수 있습니다.
-- [x] URL이나 request 객체의 데이터에 기반을 둬서 라우팅을 할 수 있습니다.
-- [x] response 객체로 헤더, HTTP 상태 코드, 바디 데이터를 보낼 수 있습니다.
-- [x] request 객체에서 response 객체로 데이터를 파이프로 연결할 수 있습니다.
-- [x] request와 response 스트림 모두에서 스트림 오류를 처리할 수 있습니다.
+-  요청 핸들러 함수로 HTTP 서버의 인스턴스를 생성하고 특정 포트로 서버를 열 수 있습니다.
+-  request 객체에서 헤더, URL, 메서드, 바디 데이터를 가져올 수 있습니다.
+-  URL이나 request 객체의 데이터에 기반을 둬서 라우팅을 할 수 있습니다.
+-  response 객체로 헤더, HTTP 상태 코드, 바디 데이터를 보낼 수 있습니다.
+-  request 객체에서 response 객체로 데이터를 파이프로 연결할 수 있습니다.
+-  request와 response 스트림 모두에서 스트림 오류를 처리할 수 있습니다.
 
 위 문서는 Node.js 트랜잭션 해부 문서의 내용을 그대로 가져왔다.
 공부를 위한 개인적인 옮기기이니 아래를 참고하는 것이 바람직하다.
