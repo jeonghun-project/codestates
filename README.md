@@ -1,5 +1,7 @@
 # JeongHun's Dev Log
 
+[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)
+
 ## Today I Learned
 
 **Learning-things**는 진짜 코드에 **ㅋ** 자도 모르는 시절부터 시작되었다.
