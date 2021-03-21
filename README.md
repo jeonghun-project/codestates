@@ -1,6 +1,8 @@
 # JeongHun's Dev Log
 
-[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)
+
+**[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)**
+
 
 ## Today I Learned
 
@@ -10,3 +12,4 @@
 
 - **42-seoul** 본 과정도 못 가보고 탈락함 `20.11`
 - 포기하지 않고 **codestates** 시작 `21.01`
+

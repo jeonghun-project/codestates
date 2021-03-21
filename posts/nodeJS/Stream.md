@@ -54,5 +54,13 @@ Stream API 특히, `pipe` method, 핵심 목적은 데이터 buffering을 허용
 
 각각은 [공식문서](https://nodejs.org/api/stream.html#stream_highwatermark_discrepancy_after_calling_readable_setencoding)를 통해 Writable method와 Readable method를 확인할 수 있으니 자세하게 알아보면 좋겠다.
 
+이와는 별개로 `EventEmiter`에 명시되어 있는 method들 또한 `Stream` 객체이면서 `EventEmiter`인 `request`에 대한 이해에 있어 필수적이다.
+
+[EventEmiter](https://jeonghun-project.github.io/Learning-things/nodeJS/EventEmitter.html)
+
+
+
+
+
 
 
