@@ -52,7 +52,111 @@ Stream API 특히, `pipe` method, 핵심 목적은 데이터 buffering을 허용
 이를 읽어 내리는 Stream
 써 내리는 Stream이 있는 것이다.
 
-각각은 [공식문서](https://nodejs.org/api/stream.html#stream_highwatermark_discrepancy_after_calling_readable_setencoding)를 통해 Writable method와 Readable method를 확인할 수 있으니 자세하게 알아보면 좋겠다.
+각각은 [공식문서](https://nodejs.org/api/stream.html#stream_highwatermark_discrepancy_after_calling_readable_setencoding)를 통해 Writable API와 Readable API를 확인할 수 있으니 자세하게 알아보면 좋겠다.
+
+## Writable
+
+### **Event**
+- close
+- drain
+- error
+- finish
+- pipe
+- unpipe
+- ...
+
+#### `'close'`
+
+writableStream 을 말 그대로 닫는다. 더이상 write할 수가 없는 상태가 된다. 더 이상 이벤트가 발생하지 않고 계산이 이루어지지 않는다.
+
+#### `'drain'`
+
+write() method에서 false가 리턴되는 경우 즉, highWaterMark 보다 큰 데이터의 요청이 들어올 때
+청크가 버퍼링되며 현재 버퍼링된 모든 청크가 빠져나가면 drain 이벤트를 발생시키면 메모리 에러를 방지할 수 있다.
+
+write()가 false를 리턴 하면 write()를 호출하지 않는 것이 좋다.
+
+```js
+function writeOneMillionTimes(writer, data, encoding, callback) {
+  let i = 1000000;
+  write();
+  function write() {
+    let ok = true;
+    do {
+      i--;
+      if (i === 0) {
+        // Last time!
+        writer.write(data, encoding, callback);
+      } else {
+        // See if we should continue, or wait.
+        // Don't pass the callback, because we're not done yet.
+        ok = writer.write(data, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      // Had to stop early!
+      // Write some more once it drains.
+      writer.once('drain', write);
+    }
+  }
+}
+```
+
+#### `'error'`
+
+데이터 쓰기 또는 piping 중 오류가 발생하면 `'error'`이벤트가 발생한다. 리스너 콜백은 호출 될 때 단일 Error인수를 전달합니다.
+
+일반적으로는 `'error'` 이벤트가 발생하면 스트림이 닫힌다.
+
+`'error'`이벤트 이후에는 `'close'`이벤트 외에는 생성되지 않아야한다.
+
+#### `'finish'`
+
+`end()`가 호출되고 모든 데이터가 기본 상태로 돌아가면 `'finish'`이벤트가 실행된다.
+
+
+#### `'pipe'`
+
+`pipe()`가 호출되면 `'pipe'` event가 실행됩니다.
+
+`unpipe`의 경우에는 반대입니다.
+
+
+### writable Stream: method
+
+너무 많으니 중요한 것만 살펴보자.
+- destroy()
+- end()
+- write()
+
+#### `destroy([error])`
+
+`Stream`을 파괴합니다. 선택적으로 `'error'`이벤트를 생성하고 `'close'`이벤트를 생성합니다.
+`destroy`된 Stream은 종료되고 이후에 호출되는 `write()` or `end()`은 **ERR_STREAM_DESTROYED** 오류를 발생시킵니다.
+
+`'drain'`event가 없는 경우에는 이전에 호출(previous call)된 `write()`또한 **ERR_STREAM_DESTROYE**오류를 트리거 한다고 한다.
+
+결론, `destroy()` 되기 전에 데이터가 정상적으로 write되기를 바라는 경우 `destroy()` 대신에 `end()`를 사용하거나 `'drain'`event를 만들어 두면 된다.
+
+#### end([chunk[, encoding]][,callback])
+
+writable.end () 메서드를 호출하면 더 이상 데이터가 Writable에 기록되지 않는다는 신호를 보냅니다.
+선택적 청크 및 인코딩 인수를 사용하면 스트림을 닫기 직전에 하나의 최종 추가 데이터 청크를 쓸 수 있습니다.
+
+```js
+// Write 'hello, ' and then end with 'world!'.
+const fs = require('fs');
+const file = fs.createWriteStream('example.txt');
+file.write('hello, ');
+file.end('world!');
+// Writing more now is not allowed!
+```
+
+#### `write(chunk[, encoding][, callback])`
+
+
+
+### Readable
 
 이와는 별개로 `EventEmiter`에 명시되어 있는 method들 또한 `Stream` 객체이면서 `EventEmiter`인 `request`에 대한 이해에 있어 필수적이다.
 
