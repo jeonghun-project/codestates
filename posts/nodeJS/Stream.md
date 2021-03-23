@@ -154,7 +154,7 @@ file.end('world!');
 
 #### `write(chunk[, encoding][, callback])`
 
-
+----- 아직 작성중
 
 ### Readable
 
