@@ -1,5 +1,4 @@
-let {getArticles} = require(path.resolve('posts/.vuepress/sidebar'))
-let makeSidebar = require('./posts/.vuepress/sidebar')
+const makeSidebar = require('./sidebar')
 
 module.exports = {
   title: 'Hoon\'s devlog',
@@ -14,6 +13,6 @@ module.exports = {
       link: 'https://github.com/jeonghun-project/Learning-things'
     }],
     smoothScroll: true,
-    sidebar: [...makeSidebar()],
+    sidebar: [...makeSidebar.makeTree()],
   }
 }
