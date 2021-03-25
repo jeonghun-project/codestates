@@ -15,7 +15,6 @@
     "url": "git+https://github.com/jeonghun-project/Learning-things.git"
   },
   "dependencies": {
-    "directory-tree": "^2.2.7",
     "vuepress": "^1.8.2"
   }
 }
