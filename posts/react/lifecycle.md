@@ -45,5 +45,3 @@ componentDidMount()는 component가 생성될 때 한 번 실행 되는 것이�
 현재 component의 state가 변경될 때도 변경된 state를 이용하여 렌더링을 해준다.
 
 forceUdate method는 강제로 render를 시키기에 업데이트가 발생하게 된다.
-
-
