@@ -88,20 +88,28 @@ export default class Welcome extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate () {
-    if(this.state.name === 'jeong') {
-      this.state.char = '천재'
-      this.state.isCharactor = true;
-    } else {
-      this.state.isCharactor = true;
-      this.state.char = '바보'
+  componentDidUpdate(preProps, preState) {
+    if(this.state.name !== preState.name) {
+      if(this.state.name === 'jeong') {
+        this.setState({
+          ...this.state,
+          char : '천재',
+          isCharactor : true,
+        })
+      } else {
+        this.setState({
+          ...this.state,
+          isCharactor : true,
+          char : '바보',
+        })
+      }
     }
   }
 
   handleChange(e) {
     this.setState({
       name : e.target.value
-      });
+    });
   }
 
   render() {
@@ -115,5 +123,33 @@ export default class Welcome extends React.Component {
       </section>
     )
   }
+}
+```
+
+fuction component로 작성하기 hook이 사용된다. 다른 페이지에서 자세한 내용은 한 번 다루도록 하겠다.
+
+```js
+export default function WelcomeFunc() {
+  const [state, setState] = useState({name: '', char: '', isCharactor: false})
+
+  const handleChange = (e) => {
+    setState({...state, name :e.target.value})
+  }
+  
+  useEffect(() => {
+    state.name === "jeong" 
+    ? setState({...state, char: "천재", isCharactor : true})
+    : setState({...state, char: "바보", isCharactor : true})
+  }, [state.name])
+
+  return (
+    <section>
+      <h1>Hello, {state.name}</h1>
+      {
+        state.isCharactor ? <p>{state.char}</p> : ''
+      }
+      <input value={state.name} onChange={handleChange} />
+    </section>
+  )
 }
 ```
