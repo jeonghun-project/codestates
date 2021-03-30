@@ -33,5 +33,4 @@ const sidebar = {
   }
 }
 
-console.log(sidebar.makeTree())
 module.exports = sidebar;

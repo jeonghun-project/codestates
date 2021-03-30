@@ -40,8 +40,28 @@ componentDidMount()는 component가 생성될 때 한 번 실행 되는 것이�
 
 `force­Update()`를 통하여 `render()`를 실행하였을 때
 
-현재 상속받고 있는 props가 상위 컴포넌트에서 변경되어 주어지면 render를 다시 실행한다.
+1. 현재 상속받고 있는 props가 상위 컴포넌트에서 변경되어 주어지면 render를 다시 실행한다.
 
-현재 component의 state가 변경될 때도 변경된 state를 이용하여 렌더링을 해준다.
+2. 현재 component의 state가 변경될 때도 변경된 state를 이용하여 렌더링을 해준다.
 
-forceUdate method는 강제로 render를 시키기에 업데이트가 발생하게 된다.
+3. `forceUdate()` method는 강제로 render를 시키기에 업데이트가 발생하게 된다.
+
+class components lifecycle method
+```js
+class lifecycle extends Component {
+  
+  componentDidMount() {
+  // 생명주기상 컴포넌트가 마운트 될때 실행된다.
+  }
+
+  compomemtDidUpdate(){
+    // state 변경, props의 변경, forceUdate()를 통해 render가 강제로 실행되었을떄 Update를 실행한다.
+  }
+
+  componentWillUnMount() {
+    // 컴포넌트가 DOM 상에서 사라질 때 (SPA 특성상 전체페이지가 바뀌는 것이 아니기에)
+    // 반드시 component가 가상DOM에서 없어질떄 기존의 이벤트 루프 등을 없애야만 메모리에 누수가 없다.
+  }
+
+}
+```
