@@ -2,7 +2,12 @@
 
 자바스크립트는 외부 api를 이용한 데이터(JSON)를 쓰고 받고할 수 있는 간단한 기능을 제공하여 비동기적인 네트워크 통신을 할 수 있는 기능인 Fetch를 제공한다.
 
-fetch의 예외 케이스를 catch하여 예외 처리하고 데이터를 response받지 않을 수 있다.
+fetch는 response 객체에 ok를 통히여 통신의 완료여부를 판달할 수 있도록한다.
+fetch자체에 대한 문제가 발생하지 않는이상 통신 결과에 인한 에러는 ok 객체의 존재 여부로 확인하여야한다.
+
+error 데이터가 response에 그대로 담겨서 온다는 것을 기억하자.
+
+catch하여 예외 처리하고 데이터를 response받지 않을 수 있다.
 
 ```jsx
 fetch(apiurl)
@@ -19,22 +24,4 @@ fetch(apiurl)
 });
 ```
 
-## Async / defer
-
-### async 비동기적인 실행을 도움
-
-async attribute를 HTML script tag 내에 선언함으로서 script file을 비동기적으로 읽어옴
-
-![ScriptAsync](./src/ScriptAsync.png)
-
-어떻게 작동하는 것인지 지금으로서는 명확하게 알 수가 없다—-*
-
-![ScriptAsync2](./src/ScriptAsync2.png)
-
-### defer
-
-async와 마찬가지로 비동기적으로 실행하지만 HTML parsing이 끝난 뒤에 excutin한다.
-
-스크립트는 HTML에 실행순서에 의하여 execute 순서가 정해진다
-
-![ScriptDefer](./src/Scriptdefer.png)
+기본적으로 fetch는 promise 객체를 리턴하기 때문에 then으로 받아주거나 await을 통해 받아 줄 수 있다.

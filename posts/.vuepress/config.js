@@ -10,7 +10,7 @@ module.exports = {
     smoothScroll: true,
     nav: [{
       text: 'GitHub',
-      link: 'https://github.com/jeonghun-project/Learning-things'
+      link: 'https://github.com/jeonghun-project/Learning-things',
     }],
     smoothScroll: true,
     sidebar: [...makeSidebar.makeTree()],

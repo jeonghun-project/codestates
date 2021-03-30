@@ -2,9 +2,9 @@
 
 [Scope / Clousure](https://www.notion.so/Scope-Clousure-5b60bd37f02d4432a10364eb50eac8d2) 
 
-### 스코프 와 클로저
+## 스코프 와 클로저
 
-## 스코프는 활동 범위 라고 볼수있다.
+### 스코프는 활동 범위 라고 볼수있다.
 
 Global Scope는 전역 변수로 문서 전체에서 활동할 수 있다. window  혹은 키워드 없이 선언된 변수들이 이와 같다
 

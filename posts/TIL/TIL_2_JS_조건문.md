@@ -52,9 +52,25 @@ if (expr) {
 }
 ```
 if 문 동작시 return이 필요한 시기에 바로 변수 할당없이 리턴을 하는것이 효율적이다.
-# 문자열
 
----
+## switch
+
+switch 조건 분기 리엑트에 들어가면 reducer 구현에 많이 사용되니까 잘 알아두면좋다
+
+```js
+switch (변수명) {
+  case 값:
+    return action
+  case 값:
+    return action
+  default:
+    return action
+}
+```
+
+이렇게 어떤 변수가 들어오면 그변수의 값이 어떤 case에 해당하는지 찾아서 action에 해당하는 행동을 하도록 시킬수 있다.
+
+# 문자열
 
 문자열은 배열형식으로 저장된다.
 
@@ -70,23 +86,18 @@ str[0] = "H"
 
 ### length PROPERTY
 
----
-
 문자열의 길이를 알 수 있다.
 
 str.length
 
 ### 문자열 메소드
 
----
 
 [메소드](https://www.notion.so/0821f29570b5455b928070738f758e78)
 
 ## 백틱 (backquoto/backtick)
 
----
-
-Javascript에서 템플릿 리터럴(Template literals(Tamplate strings))에 활용 되고, 마크다운에서 코드를 강조 하는데 쓰이기도 한다.( ```)
+Javascript에서 템플릿 리터럴(Template literals(Tamplate strings)), 마크다운에서 코드를 강조 하는데 쓰이기도 한다.( ```)
 
 - 줄바꿈을 쉽게 할 수 있다
 - 문자열 내부에 표현식을 포함할 수 있다.

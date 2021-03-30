@@ -20,17 +20,17 @@
 
 `resolve(data)` → promise는 data를 가지고 있다.
 
-![PromiseFullfilled](src/Promise_fullfilled.png)
+![PromiseFullfilled](./src/Promise_fullfilled.png)
 
 `reject`는 `rejected`일때 어떤 행동을 할 것인지 정하는 함수 ⇒ reject 자체의 return은 void
 
 `reject(new Error("error case"));` → 에러를 발생시켜서 에러를 핸들링 할 수 있게 만들어 줌 `catch` 를 이용하여 우리는 error를 핸들링 할 수 있다. `Error Object(Message, fileName, lineNumber)`
 
-![PromiseReject](src/Promise_reject.png)
+![PromiseReject](./src/Promise_reject.png)
 
 `excute`에서 resolve나 reject를 호출하지 않으면 영원히 pending상태
 
-![PromisePending](src/Promisepending.png)
+![PromisePending](./src/Promisepending.png)
 
 ## producing vs consumer
 
