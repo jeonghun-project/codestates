@@ -44,6 +44,7 @@ Representational State Transfer
 ## Uniform interface
 
 Resource - 이름 붙일 수 있는 어떤 것이든 리소스가 될 수 있다.
+
 이러한 Resouce에 대하여 어떻게 조작할 것인지가 중요하다.
 
 - Identification of resources
@@ -52,6 +53,7 @@ Resource - 이름 붙일 수 있는 어떤 것이든 리소스가 될 수 있다
 - Hypermedia As The Of Application State (HATEOAS)
 
 [RESOURCE-NAME](https://restfulapi.net/resource-naming)
+
 "그런 REST API로 괜찮은가?" - Naver DEVIEW 2017
 
 **명사를 사용해라**
