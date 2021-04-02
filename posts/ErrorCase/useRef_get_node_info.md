@@ -6,7 +6,7 @@
 
 document에서 id를 통해 element를 잡아오려 하였지만 이것또한 불가능... didMount상태에서는 원래 정상적으로 가져와야하는 것인데
 
-useEffect에서도 leyoutEffect에서도 안 들고와지는 것은 무슨 문제인지 파악해서 업데이트 하겠슴...
+useEffect에서도 layoutEffect에서도 안 들고와지는 것은 무슨 문제인지 파악해서 업데이트 하겠슴...
 
 **기존 코드**
 
