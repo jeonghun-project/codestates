@@ -15,10 +15,10 @@ const TooltipBox = useRef(null);
 const [height, setHeight] = useState(0);
 
 useLayoutEffect(() => {
-  console.dir(document.getElementById("TooltipBox"));
+  console.dir(document.getElementById("TooltipBox")); // 여기서도 에러가 난다
   // setHeight(document.getElementById('TooltipBox').clientHeight);
   if (TooltipBox.current) {
-    console.log(TooltipBox.current.clientHeight);
+    console.log(TooltipBox.current.clientHeight); // 여기로는 절대 못들어 온다...
     setHeight(TooltipBox.current.clientHeight);
   }
 }, []);
