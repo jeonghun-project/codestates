@@ -39,7 +39,7 @@ Provider는 react에서 redux API들이 store에 접근 할 수 있도록도와�
 
 Redux의 기본 구조
 
-![redux](./src/redux.png)
+![redux](./src/redux_gif.gif)
 
 ## dispatch
 
@@ -94,4 +94,86 @@ function todoReducer(state: todoList = initialState, action: TodoActions) {
 
 ## react redux
 
-react에서의 상태 관리를 위하여 re
+react에서의 상태 관리를 위하여 react 최상단 컴포넌트에 store를 만들어 전체 컴포넌트에서 redux 훅을 이용하여 state에 접근할 수 있다.
+
+최상단 index.js에 Store를 만들어서 Provider를 통해 전체엡에 state를 가질 수 있도록 해준다.
+
+```js
+import { createStore } from "redux";
+import rootReducer from "./modules";
+import { Provider } from "react-redux";
+
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+Action 객체를 만들어 줄 함수를 만든다
+
+```js
+export const addItem = (todoItem: string) => ({type: "ADD_ITEM", payload: todoItem}as const)
+export const doneItem  = (id: number) => ({type: "DONE_ITEM", payload: id}as const)
+```
+
+타입스크립트에서는 해당 액션의 타입을 정의해 줘야 한다.
+
+```js
+type TodoActions = ReturnType<typeof addItem> | ReturnType<typeof doneItem>;
+```
+
+reducer를 작성한다.
+
+```js
+function todoReducer(state: todoList = initialState, action: TodoActions) {
+  switch (action.type) {
+    case "ADD_ITEM":
+      return state.concat({
+        id: state.length + 1,
+        text: action.payload,
+        done: false
+      });
+    case "DONE_ITEM":
+      return state.map(el => {
+        el.done = el.id === action.payload ? !el.done : el.done;
+        return el;
+      });
+    default:
+      return state;
+  }
+}
+```
+
+component에서 사용하기
+
+우선 사용할 state를 component에 useSelector를 통해서 가져온다.
+
+```js
+const todos = useSelector((state: RootState) => state.todos);
+```
+
+dispatch를 통해 reducer에 action 객체를 넘겨 주도록 준비시킨다.
+
+```js
+const dispatch = useDispatch();
+```
+
+이벤트가 발생하였을때 action 객체를 만들어 넘겨주는 dispatch를 작성한다.
+
+```js
+const onInput = (text: string) => {
+  if (text) dispatch(addItem(text));
+};
+
+const onDone = (id: number) => {
+  dispatch(doneItem(id));
+};
+```
+
+그럼 잘 작동할 것이다
+
+![sample](./src/redux.gif)
