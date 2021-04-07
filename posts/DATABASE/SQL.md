@@ -22,17 +22,6 @@ DATABASE TABLE - DTATABASE안에는 TABLE이 있다
 
 질의문 query를 통하여 데이터 베이스에 원하는 데이터만을 추려서 가져올 수 있다.
 
-## ACID
-
-**Atomicity** 원자성 하나의 트랜젝션 내에서는 모든 연산이 성공하거나 모두 실패해야 한다.
-
-**Consistency** 일관성 데이터베이스 상태는 이전과 같이 유효해야 한다. 제약을 위반하지 않아야 한다.
-
-**Isolation** 고립성 하나의 트랜잭션이 다른 트랜잭션은 독립적이여야 한다.
-
-**Durability** 지속성 트랜잭션에 대한 로그 기록은 영구적이어야 한다.
-
-
 ## DBMS(DATABASE MANAGE SYSTEM)
 
 이런 데이터 베이스를 관리하는 시스템으로 MariaDB, Oracle, MySQL, MongoDB, 등등이 있다.
