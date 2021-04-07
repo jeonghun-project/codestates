@@ -177,3 +177,5 @@ const onDone = (id: number) => {
 그럼 잘 작동할 것이다
 
 ![sample](./src/redux.gif)
+
+다음은 redux를 통해 비동기작업을 할 수 있도록 돕는 thunk에 대하여 다뤄보도록 하겠다.
