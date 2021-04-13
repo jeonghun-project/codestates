@@ -121,7 +121,7 @@ module.exports = db;
 
 cli를 이용하여 model을 생성해 줄수 있다.
 
-\$ npx sequelize model:generate --name users --attributes name:string
+`$ npx sequelize model:generate --name users --attributes name:string`
 
 이렇게 파일이 만들어진다. ./models/user.js
 
