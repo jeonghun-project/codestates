@@ -155,14 +155,30 @@ module.exports = (sequelize, DataTypes) => {
 
 ```js
 const { sequelize } = require("sequelize");
-const d
+const db = require("../models/model");
 
-
+db.findAll(); // SELECT * FROM db
+db.findOne({ where: { userid: "jeong" } }); //SELECT * FROM db WHERE userid='jeong';
+Model.findAll({
+  attributes: ["name", "email"] //SELECT name, email FROM db
+});
 ```
 
-Association;
+## Association
+
+Association은 각 모댈의 Associate mothod 내부에 작성해 주면 된다.
+
+- To create a **One-To-One** relationship, the `hasOne` and `belongsTo` associations are used together;
+- To create a **One-To-Many** relationship, the `hasMany` and `belongsTo` associations are used together;
+- To create a **Many-To-Many** relationship, two `belongsToMany` calls are used together
+
+이렇게 되어 있다 One-To-One을 연결해보자
+
+```js
+Foo.hasOne(Bar, {
+  foreignKey: "myFooId"
+});
+Bar.belongsTo(Foo);
+```
+
 Transaction;
-
-```
-
-```
