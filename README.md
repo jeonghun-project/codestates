@@ -12,4 +12,4 @@
 
 - **42-seoul** 본 과정도 못 가보고 탈락함 `20.11`
 - 포기하지 않고 **codestates** 시작 `21.01`
-
+- **codestates** First Project 끝 `21.05` [github repo](https://github.com/codestates/Phovis-client)
