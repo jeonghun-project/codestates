@@ -1,8 +1,6 @@
 # JeongHun's Dev Log
 
-
 **[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)**
-
 
 ## Today I Learned
 
@@ -13,3 +11,4 @@
 - **42-seoul** 본 과정도 못 가보고 탈락함 `20.11`
 - 포기하지 않고 **codestates** 시작 `21.01`
 - **codestates** First Project 끝 `21.05` [github repo](https://github.com/codestates/Phovis-client)
+- **codestates** Last Project 끝 `21.06` [github repo](https://github.com/codestates/picaff-client)
