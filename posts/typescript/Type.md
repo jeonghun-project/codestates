@@ -1,4 +1,4 @@
-#  Type
+# Type
 
 기존 자바스크립트와는 다르게 분명한게 타입을 명시해주어 변수사용의 혼동이 오는 것을 봉쇄한다.
 
@@ -6,7 +6,7 @@
 
 정적으로 변수를 사용할때 타입을 선언하여 다른 타입의 데이터는 할당하지 않도록 에러를 표시한다.
 
-```tsx
+```ts
 /* string */
 let string: string = "hello";
 let haptic: string = `hello`; /* Template literals */
@@ -19,15 +19,31 @@ let num: number = 2;
 let b: boolean = true;
 
 /* null */
-let n: null = null;
+let n: number | null; // 텅텅 비었음
 
 /* undefined */
-let u: undefined = undefined;
+let u: string | undefined;  // 비엇는지 안 비었는지 모름
+
+/* unknown */
+let it: unknown; // 어떤 타입인지 모를때 근데 쓰지말자...
+
+/* any */
+let any: any; // 이 녀석도 레거시다 가져다가 버리자
+
+/* void */
+function  print():void { // 리턴타입을 지정해주는 것이 좋은 관례이다. 변수의 타입으로 지정해 주지는 않는다.
+  console.log('hello');
+  return;
+}
 
 /* array */
 let array: any = [3, true, "hello"];
 let array: number = [3, 4, 5];
 let array: Array<number> = [2, 5, 6];
+
+/* object */
+let obj:object; // 쓰지말자 인터페이스로 대체하자.
+function acceptSomeObject(obj: object) {}
 
 /* tuple */
 let tuple: [string, number] /* 고정된 수와 타입을 명시하여 제한 */
@@ -52,12 +68,6 @@ const enum move  {
 	...
 }
 
-/* any 타입체크가 필요한 값을 사용할 때 사용하자 */
-let what: any = 3 or "hello" or [3, "eld"]
-
-/* void */
-function doSomething(): void { }
-
 /* never */
 function infiniteLoop(): never { // 무한 루프
   while (true) {}
@@ -65,7 +75,43 @@ function infiniteLoop(): never { // 무한 루프
 
 function error(message: string): never { // 에러 체크
   throw new Error(message);
+} // 이렇게 하면 어플리케이션이 죽는다.
+```
+
+## enum
+
+enum은 대부분이 union타입으로 대체 가능하다. **사용하지 않는 것을 권장**
+모바일은 어플리케이션과 json 형식으로 통신을 할때 서로 이해하기 위하여 enum을 사용할 수 있다
+
+```ts
+// enum 여러가지 상수값을 모아서 정의
+
+const MAX_NUM = 6;
+const MAX_studentes_per_class = 10;
+
+const monday = 0;
+const tuesday = 1;
+const wednsday = 2;
+const days_ENUM = Object.freeze({ MONDAY: 0, TUESDAY: 1 });
+const dayOfToday = days_ENUM.MONDAY;
+
+//ts
+enum Days {
+  Monday, // 0
+  Tuesday, // 1
+  Wednesday, // 2
+  Thursday, // 3
+  Friday, // 4
+  Satarday, // 5
+  Sunday, // 6
 }
+
+console.log(Days.Monday); // => 0
+let day = Days.Satarday;
+console.log(day); // => 5
+
+day = 10; // 어떠한 컴파일 에러도 나타내지 않는다. 이것이 enum사용을 피해야하는 이유이다.
+console.log(day); // => 10
 ```
 
 ## 타입 추론(Type Inference)
@@ -76,60 +122,28 @@ function error(message: string): never { // 에러 체크
 - 타입이 정해진 변수는 다른 타입의 값이 할당될 때 정적인 타입 특성으로 에러를 터트린다.
 - 타입 추론은 일반적으로 Union type을 통해 결정된다.
 
-```tsx
-let number = 4 // number || boolean
-```
+```ts
+// assertion 똥이다 똥
 
-하지만 우리는 중간에 타입이 변환될 수도 있다 이럴때 어떻게 하는게 좋을까
+function jsStrFunc(): any {
+  return "hello";
+}
 
-## 타입 캐스팅
+const result = jsStrFunc();
+(result as string).length;
 
-기존의 타입에서 다른 타입으로 타입 캐스팅하려면 `as` 키워드를 사용하거나 `<>` 연산자를 사용할 수 있다.
+const wrong: any = 5;
+console.log((wrong as Array<number>).push(1)); //죽는다 주겅
 
-```tsx
+function findNumbers(): number[] | undefined {
+  return undefined;
+}
+const numbers = findNumbers();
+numbers!.push(2); // 죽는다 죽어 !는 절대적으로 있다고 장담하는 경우
 
-```
-
-아래는 리엑트 type의  usecase이다. 아래자세한 내용이 나와 있다.
-
-[Typing Component Props | React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example)
-
-```tsx
-type AppProps = {
-  message: string;
-  count: number;
-  disabled: boolean;
-  /** array of a type! */
-  names: string[];
-  /** string literals to specify exact string values, with a union type to join them together */
-  status: "waiting" | "success";
-  /** any object as long as you dont use its properties (NOT COMMON but useful as placeholder) */
-  obj: object;
-  obj2: {}; // almost the same as `object`, exactly the same as `Object`
-  /** an object with any number of properties (PREFERRED) */
-  obj3: {
-    id: string;
-    title: string;
-  };
-  /** array of objects! (common) */
-  objArr: {
-    id: string;
-    title: string;
-  }[];
-  /** a dict object with any number of properties of the same type */
-  dict1: {
-    [key: string]: MyTypeHere;
-  };
-  dict2: Record<string, MyTypeHere>; // equivalent to dict1
-  /** any function as long as you don't invoke it (not recommended) */
-  onSomething: Function;
-  /** function that doesn't take or return anything (VERY COMMON) */
-  onClick: () => void;
-  /** function with named prop (VERY COMMON) */
-  onChange: (id: number) => void;
-  /** alternative function type syntax that takes an event (VERY COMMON) */
-  onClick(event: React.MouseEvent<HTMLButtonElement>): void;
-  /** an optional prop (VERY COMMON!) */
-  optional?: OptionalType;
-};
+const button = document.querySelector("class");
+button.nodeValue; // this is not good
+if (button) {
+  button.nodeValue; // this is good
+}
 ```
