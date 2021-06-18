@@ -11,25 +11,25 @@
 closure가 혁신적이고 비밀을 간직한체 Singleton 객체를 생성하는 방법이다.
 
 ```jsx
-var singleton = (function() {
+var singleton = (function () {
   var instance;
-  var a = 'hello';
+  var a = "hello";
   function initiate() {
     return {
       a: a,
-      b: function() {
+      b: function () {
         alert(a);
-      }
+      },
     };
   }
   return {
-    getInstance: function() {
+    getInstance: function () {
       if (!instance) {
         instance = initiate();
       }
       return instance;
-    }
-  }
+    },
+  };
 })();
 var first = singleton.getInstance();
 var second = singleton.getInstance();
@@ -44,7 +44,7 @@ method는 객체에 할당된 함수로서 해당객체에서 호출하여 사�
 
 # class
 
-[class](https://www.notion.so/class-4f021df815bd473a83f3975f4cdeda56) 
+[class](../javascript/11_class.md)
 
 객체를 찍어낼 수 있는 청사진(blueprint) class를 이용해서 객체를 만들어낼 수 있고, 이렇게 만들어진 객체를 instance라고 칭한다.
 
@@ -62,6 +62,6 @@ new는 instance 키워드이다. 각각의 인스턴스는 class의 내장 함�
 
 ## this
 
-[this](https://www.notion.so/this-9f3b760acebf4d3abcf30b3110c45125) 
+[this](../javascript/14_this.md)
 
 javascript에서만 있는 기능이다
