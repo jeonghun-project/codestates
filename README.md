@@ -1,6 +1,8 @@
 # JeongHun's Dev Log
 
-**[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)**
+여기를 살펴보세요 **[Jeong's Devloog - Learning things](https://jeonghun-project.github.io/Learning-things)**
+
+git action을 통해 자동으로 배포되고 있습니다
 
 ## Today I Learned
 
