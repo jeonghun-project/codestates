@@ -1,4 +1,4 @@
-# reat - ts react에서 ts 사용하기
+# react에서 Typescript 사용하기
 
 아래는 리엑트 type의 usecase이다. 아래자세한 내용이 나와 있다.
 
