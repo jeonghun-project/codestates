@@ -203,7 +203,7 @@ obj1.sayName();
 obj2.sayName();
 ```
 
-prototype object mettod 내부에 `this` 또한 일반 메소드 방식과 마찬가지로 호출한 객체에 바인딩.
+prototype object method 내부에 `this` 또한 일반 메소드 방식과 마찬가지로 호출한 객체에 바인딩.
 
 ```js
 function Person(name) {
