@@ -38,3 +38,26 @@ didUpdate에서 State를 변경한다면, 반드시 아래와 같은 처리가 �
     }
   }
 ```
+
+최근에 작성한 코드중에 form 태그 내부에서 여러 인풋을 입력받는 일이 많을때 사용하기 좋은 방법을 알아내어 추가해 본다.
+
+한 component에서 멀티 인풋을 처리 할때 사용하면 좋을것 같다.
+
+```ts
+export default function SignIn() {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  return (
+    <>
+      <input name="email" value={email} onChange={handleChange} />
+      <input name="password" value={password} onChange={handleChange} />
+    </>
+  );
+}
+```
