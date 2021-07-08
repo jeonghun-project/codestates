@@ -107,6 +107,7 @@ rsort($li); // 역순으로 정렬
 ?>
 
 // hash dictionary associative array
+// 마치 javascript의 객체와 같은 느낌이다.
 
 $grades = array('egoing'=>10, 'k8805'=>6, 'sorialgi'=>80);
 
