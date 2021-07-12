@@ -72,4 +72,4 @@ for($i=0; $i<10; $i++){
 
 위 내용은 [생활코딩](https://opentutorials.org/module/411/3756)의 xdebug 강의에 나오는 코드내용이다.
 
-이렇게 xdebug를 이용해서 php 디버깅을 해볼 수 있다.
+이렇게 xdebug를 이용해서 php 디버깅 및 프로파일링을 해볼 수 있다.

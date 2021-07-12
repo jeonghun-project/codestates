@@ -19,7 +19,7 @@ php 파일들은 서로 참조형식을 지원하고
 우선 함수를 불러와 사용하는 코드를 살펴보면
 
 ```php
-// test.php
+test.php
 <?php
 $grades = array('jeong'=>10, 'kim'=>6, 'sora'=>80);
 function printObj($grades) {
@@ -48,11 +48,10 @@ printObj($grades);
 
 각 모듈이 되는 파일들의 `namespace` 마치 `directory`와 유사한 각 영역을 만들어 주어서 해당 영역안의 변수와 함수는 다른 영역의 변수와 함수를 **침범하지 못하도록(고유하도록) 만들어 줄 수 있다.**
 
-
 예를 살펴보자
 
 ```php
-// test.php
+test.php
 <?php
 $grades = array('hoon'=>10, 'jang'=>6, 'sori'=>80);
   function printObj($grades) {
@@ -65,7 +64,7 @@ $grades = array('hoon'=>10, 'jang'=>6, 'sori'=>80);
 
 ```php
 <?php
-// main.php
+main.php
 $object = array('jeong'=>10, 'bora'=>6, 'nogo'=>80);
   function printObj($grades) {
     foreach($grades as $key => $value){
@@ -83,14 +82,14 @@ include 'main.php';
 printObj($object);
 ```
 
-이렇게 하면 
+이렇게 하면
 
 `Fatal error: Cannot redeclare printObj() (previously declared in /var/www/html/test.php:3) in /var/www/html/main.php on line 4`
 
 이런 에러를 볼 수가 있다. 이미 선언되어 있다고 한다 이를 네임스페이스로 어떻게 방지할수 있는지 살펴보자
 
 ```php
-// test.php
+test.php
 <?php
 namespace func\grade;
 $grades = array('hoon'=>10, 'jang'=>6, 'sori'=>80);
@@ -103,7 +102,7 @@ $grades = array('hoon'=>10, 'jang'=>6, 'sori'=>80);
 ```
 
 ```php
-// main.php
+main.php
 <?php
 namespace func\obj;
 $object = array('jeong'=>10, 'bora'=>6, 'nogo'=>80);
