@@ -63,8 +63,8 @@ $grades = array('hoon'=>10, 'jang'=>6, 'sori'=>80);
 ```
 
 ```php
-<?php
 main.php
+<?php
 $object = array('jeong'=>10, 'bora'=>6, 'nogo'=>80);
   function printObj($grades) {
     foreach($grades as $key => $value){
