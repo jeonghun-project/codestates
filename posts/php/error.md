@@ -1,4 +1,4 @@
-# php에서의 Error
+# php - Error
 
 [모던PHP의 자료를 참고하자](https://modernpug.github.io/php-the-right-way/#errors) 확인해보면 php에서의 에러에 대한 계략적인 설명을 하고 있어 이해하기에 좋다.
 
@@ -27,7 +27,7 @@ php 한국어 가이드에 설명
 
 [공식 php 문서의 예외부분](https://www.php.net/language.exceptions)을 참고할 필요가 있다.
 
-### 가장 기본적인 error handler
+### 가장 기본적인 Error handler
 
 ```php
 <?php
