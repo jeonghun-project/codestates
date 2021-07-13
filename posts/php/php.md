@@ -14,18 +14,6 @@ serverside script이다.
 
 2. 동적인 타입 추론
 
-## php debug
-
-error log 파악하기
-
-`tail -f /var/log/apache2/error.log`
-
-terminal에서 입력해보면 에러로그를 확인 해볼수있다.
-
-[php.png](src/php.png)
-
-php.ini에서 php 실행환경을 설정할 수 있다.
-
 ## 기본 문법
 
 ```php
@@ -71,7 +59,7 @@ var_dump($arr);
 $li = ['a', 'b', 'c', 'd', 'e'];
 $li = array_merge($li, ['f','g']); // 배열에 배열을 합칠때
 var_dump($li);
-?>
+
 
 /*
   array(7) { [0]=> string(1) "a" [1]=> string(1) "b" [2]=> string(1) "c" [3]=> string(1) "d" [4]=> string(1) "e" [5]=> string(1) "f" [6]=> string(1) "g" }
@@ -121,4 +109,5 @@ key: egoing value:10
 key: k8805 value:6
 key: sorialgi value:80
 */
+?>
 ```
