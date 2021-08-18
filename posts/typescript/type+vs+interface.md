@@ -4,8 +4,6 @@ tpye : 데이터의 타입을 담을 때, 해당 타입을 명시하기 위하�
 
 interface : 구현이 목적으로 API 처럼 규격사항을 정해줄때 사용하는 것이 좋다
 
-## interface
-
 ```ts
 type PositionType = {
   x: number;
