@@ -20,79 +20,77 @@ vue js 공식문서에 따르면
 ## 선언을 통하여 데이터 렌더링하기
 
 ```html
-// index.html
-...
-    <body>
-        
-        <div id="app">
-            {{ message }}
-        </div>
-...
+// index.html ...
+<body>
+  <div id="app">{{ message }}</div>
+  ...
+</body>
 ```
 
 ```js
 // Vue instance 생성하기
-var app = new Vue({ 
+var app = new Vue({
   // id로 element 타겟 설정하기
-    el: '#app',
-    // data 객체에 필요한 정보 저장하기.
-    data: {
-        message: 'Hello Vue!'
-    }
+  el: "#app",
+  // data 객체에 필요한 정보 저장하기.
+  data: {
+    message: "Hello Vue!",
+  },
 });
 
-app.message = 'changed the data'
+app.message = "changed the data";
 ```
 
 이제 화면에는 Hello Vue가 보이게 된다.
 
 ## v- attribute
+
 v-를 통해서 다양한 vuejs attribute를 설정할 수 있다.
 
-### v-if 
+### v-if
+
 ```html
 <div id="app">
-    <span v-if="seen">Now you see me</span>
+  <span v-if="seen">Now you see me</span>
 </div>
 ```
 
 ```js
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
     // 보이고
-    seen: true
-  }
-})
+    seen: true,
+  },
+});
 // 안 보이고
 app.seen = false;
 ```
 
 ### v-for
+
 ```html
 ...
-    <body>
-        
-        <div id="app">
-            <ol>
-                <li v-for="todo in todos">
-                {{ todo.text }}
-                </li>
-            </ol>
-        </div>
-...
+<body>
+  <div id="app">
+    <ol>
+      <li v-for="todo in todos">{{ todo.text }}</li>
+    </ol>
+  </div>
+  ...
+</body>
 ```
 
 ```js
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
     todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
-    ]
-  }
+      { text: "Learn JavaScript" },
+      { text: "Learn Vue" },
+      { text: "Build something awesome" },
+    ],
+  },
 });
 ```
 
@@ -100,77 +98,77 @@ var app = new Vue({
 
 ```html
 ...
-    <body>
-        
-        <div id="app">
-            <p>{{ message }}</p>
-            <button v-on:click="reverseMessage">Reverse Message</button>
-        </div>
-        
-...
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+
+  ...
+</body>
 ```
 
 ```js
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    message: 'Hello Vue.js!'
+    message: "Hello Vue.js!",
   },
   methods: {
     reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
-    }
-  }
-})
+      this.message = this.message.split("").reverse().join("");
+    },
+  },
+});
 ```
 
 ### v-model
 
 ```html
 ...
-    <body>
-    
-        <div id="app">
-            <p>{{ message }}</p>
-            <input v-model="message">
-        </div>
-    ...
-``` 
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <input v-model="message" />
+  </div>
+  ...
+</body>
+```
 
 ```js
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    message: 'Hello Vue!'
-  }
-})
+    message: "Hello Vue!",
+  },
+});
 ```
 
 ## components
 
 ```html
 ...
-    <body>
-    
-        <div id="app">
-            <ol>
-                <todo-item></todo-item>
-                <todo-item></todo-item>
-            </ol>
-        </div>
-...
+<body>
+  <div id="app">
+    <ol>
+      <todo-item></todo-item>
+      <todo-item></todo-item>
+    </ol>
+  </div>
+  ...
+</body>
 ```
 
 ```js
 //children components
-Vue.component('todo-item', {
-  template: '<li>This is a todo</li>'
-})
+Vue.component("todo-item", {
+  template: "<li>This is a todo</li>",
+});
 
 // parent
 var app = new Vue({
-  el: '#app'
-})
+  el: "#app",
+});
 ```
 
 ### with props components
@@ -178,7 +176,7 @@ var app = new Vue({
 ```html
 ...
     <body>
-    
+
         <div id="app">
             <ol>
                 <todo-item
@@ -195,19 +193,19 @@ var app = new Vue({
 ```
 
 ```js
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: '<li>{{ todo.text }}</li>'
-})
+Vue.component("todo-item", {
+  props: ["todo"],
+  template: "<li>{{ todo.text }}</li>",
+});
 
 var app = new Vue({
-    el: '#app',
-    data: {
-      groceryList: [
-        { id: 0, text: 'Vegetables' },
-        { id: 1, text: 'Cheese' },
-        { id: 2, text: 'Whatever else humans are supposed to eat' }
-      ]
-    }
-})
+  el: "#app",
+  data: {
+    groceryList: [
+      { id: 0, text: "Vegetables" },
+      { id: 1, text: "Cheese" },
+      { id: 2, text: "Whatever else humans are supposed to eat" },
+    ],
+  },
+});
 ```
