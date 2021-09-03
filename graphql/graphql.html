@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>graph.ql | Hoon&#39;s devlog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Hoon's devlog">
+    
+    <link rel="preload" href="/Learning-things/assets/css/0.styles.c3860cfc.css" as="style"><link rel="preload" href="/Learning-things/assets/js/app.1db23252.js" as="script"><link rel="preload" href="/Learning-things/assets/js/2.beb24693.js" as="script"><link rel="preload" href="/Learning-things/assets/js/66.ffd4dd59.js" as="script"><link rel="prefetch" href="/Learning-things/assets/js/10.8f5088fa.js"><link rel="prefetch" href="/Learning-things/assets/js/100.92b9e05f.js"><link rel="prefetch" href="/Learning-things/assets/js/101.e840909b.js"><link rel="prefetch" href="/Learning-things/assets/js/102.8d56f015.js"><link rel="prefetch" href="/Learning-things/assets/js/103.227cfa25.js"><link rel="prefetch" href="/Learning-things/assets/js/104.8e1014b7.js"><link rel="prefetch" href="/Learning-things/assets/js/105.d32c5f71.js"><link rel="prefetch" href="/Learning-things/assets/js/106.21038158.js"><link rel="prefetch" href="/Learning-things/assets/js/107.ed141650.js"><link rel="prefetch" href="/Learning-things/assets/js/108.b2dc1b20.js"><link rel="prefetch" href="/Learning-things/assets/js/109.dfcd9b21.js"><link rel="prefetch" href="/Learning-things/assets/js/11.9d76611d.js"><link rel="prefetch" href="/Learning-things/assets/js/110.c96b36e6.js"><link rel="prefetch" href="/Learning-things/assets/js/111.b2a6b574.js"><link rel="prefetch" href="/Learning-things/assets/js/112.41cd4ad8.js"><link rel="prefetch" href="/Learning-things/assets/js/113.42b4fc2c.js"><link rel="prefetch" href="/Learning-things/assets/js/114.e24e0d4b.js"><link rel="prefetch" href="/Learning-things/assets/js/115.d8114321.js"><link rel="prefetch" href="/Learning-things/assets/js/116.29a2a334.js"><link rel="prefetch" href="/Learning-things/assets/js/117.23861dfa.js"><link rel="prefetch" href="/Learning-things/assets/js/12.3174e948.js"><link rel="prefetch" href="/Learning-things/assets/js/13.1c1b1a77.js"><link rel="prefetch" href="/Learning-things/assets/js/14.91f1995b.js"><link rel="prefetch" href="/Learning-things/assets/js/15.821eb48b.js"><link rel="prefetch" href="/Learning-things/assets/js/16.9fe29a00.js"><link rel="prefetch" href="/Learning-things/assets/js/17.3744914e.js"><link rel="prefetch" href="/Learning-things/assets/js/18.014df243.js"><link rel="prefetch" href="/Learning-things/assets/js/19.c5a04f04.js"><link rel="prefetch" href="/Learning-things/assets/js/20.265ab752.js"><link rel="prefetch" href="/Learning-things/assets/js/21.d5078d32.js"><link rel="prefetch" href="/Learning-things/assets/js/22.c16750a6.js"><link rel="prefetch" href="/Learning-things/assets/js/23.78180f61.js"><link rel="prefetch" href="/Learning-things/assets/js/24.36af2d74.js"><link rel="prefetch" href="/Learning-things/assets/js/25.ce1e522e.js"><link rel="prefetch" href="/Learning-things/assets/js/26.07f09af4.js"><link rel="prefetch" href="/Learning-things/assets/js/27.c8bc8b77.js"><link rel="prefetch" href="/Learning-things/assets/js/28.f83df948.js"><link rel="prefetch" href="/Learning-things/assets/js/29.f25a0507.js"><link rel="prefetch" href="/Learning-things/assets/js/3.12728ddb.js"><link rel="prefetch" href="/Learning-things/assets/js/30.f0dd4fa9.js"><link rel="prefetch" href="/Learning-things/assets/js/31.90a3f6e8.js"><link rel="prefetch" href="/Learning-things/assets/js/32.23997272.js"><link rel="prefetch" href="/Learning-things/assets/js/33.96c6939a.js"><link rel="prefetch" href="/Learning-things/assets/js/34.c980530a.js"><link rel="prefetch" href="/Learning-things/assets/js/35.4013ac46.js"><link rel="prefetch" href="/Learning-things/assets/js/36.9ad193c2.js"><link rel="prefetch" href="/Learning-things/assets/js/37.8158d43a.js"><link rel="prefetch" href="/Learning-things/assets/js/38.c986cde8.js"><link rel="prefetch" href="/Learning-things/assets/js/39.59cffb7f.js"><link rel="prefetch" href="/Learning-things/assets/js/4.5cb58803.js"><link rel="prefetch" href="/Learning-things/assets/js/40.715204a2.js"><link rel="prefetch" href="/Learning-things/assets/js/41.71c46527.js"><link rel="prefetch" href="/Learning-things/assets/js/42.efeea89d.js"><link rel="prefetch" href="/Learning-things/assets/js/43.e746c47d.js"><link rel="prefetch" href="/Learning-things/assets/js/44.d24dca20.js"><link rel="prefetch" href="/Learning-things/assets/js/45.eb19ae79.js"><link rel="prefetch" href="/Learning-things/assets/js/46.24901d1b.js"><link rel="prefetch" href="/Learning-things/assets/js/47.d1ea4060.js"><link rel="prefetch" href="/Learning-things/assets/js/48.03901fd9.js"><link rel="prefetch" href="/Learning-things/assets/js/49.a53139dd.js"><link rel="prefetch" href="/Learning-things/assets/js/5.68903a77.js"><link rel="prefetch" href="/Learning-things/assets/js/50.e7b25da5.js"><link rel="prefetch" href="/Learning-things/assets/js/51.38015eb0.js"><link rel="prefetch" href="/Learning-things/assets/js/52.6194dd70.js"><link rel="prefetch" href="/Learning-things/assets/js/53.77cc90c0.js"><link rel="prefetch" href="/Learning-things/assets/js/54.120c79c1.js"><link rel="prefetch" href="/Learning-things/assets/js/55.ae5d13d7.js"><link rel="prefetch" href="/Learning-things/assets/js/56.93957fc7.js"><link rel="prefetch" href="/Learning-things/assets/js/57.a89fa8df.js"><link rel="prefetch" href="/Learning-things/assets/js/58.1f21bd93.js"><link rel="prefetch" href="/Learning-things/assets/js/59.3e2f73a8.js"><link rel="prefetch" href="/Learning-things/assets/js/6.9acc85a3.js"><link rel="prefetch" href="/Learning-things/assets/js/60.bad1d60d.js"><link rel="prefetch" href="/Learning-things/assets/js/61.b45eeacb.js"><link rel="prefetch" href="/Learning-things/assets/js/62.87a53a62.js"><link rel="prefetch" href="/Learning-things/assets/js/63.2a0fae8b.js"><link rel="prefetch" href="/Learning-things/assets/js/64.2d5aab82.js"><link rel="prefetch" href="/Learning-things/assets/js/65.47bdd663.js"><link rel="prefetch" href="/Learning-things/assets/js/67.e27e9866.js"><link rel="prefetch" href="/Learning-things/assets/js/68.5b76be54.js"><link rel="prefetch" href="/Learning-things/assets/js/69.74e2a3e6.js"><link rel="prefetch" href="/Learning-things/assets/js/7.509b5d91.js"><link rel="prefetch" href="/Learning-things/assets/js/70.6750f2d4.js"><link rel="prefetch" href="/Learning-things/assets/js/71.f47def5e.js"><link rel="prefetch" href="/Learning-things/assets/js/72.bb17cd8c.js"><link rel="prefetch" href="/Learning-things/assets/js/73.47b5f9ab.js"><link rel="prefetch" href="/Learning-things/assets/js/74.edcba967.js"><link rel="prefetch" href="/Learning-things/assets/js/75.8af54180.js"><link rel="prefetch" href="/Learning-things/assets/js/76.d5acbfa8.js"><link rel="prefetch" href="/Learning-things/assets/js/77.3c0b96bb.js"><link rel="prefetch" href="/Learning-things/assets/js/78.0496ea63.js"><link rel="prefetch" href="/Learning-things/assets/js/79.745fdfaa.js"><link rel="prefetch" href="/Learning-things/assets/js/8.a4503fae.js"><link rel="prefetch" href="/Learning-things/assets/js/80.b4a2009c.js"><link rel="prefetch" href="/Learning-things/assets/js/81.4793ead0.js"><link rel="prefetch" href="/Learning-things/assets/js/82.9e450816.js"><link rel="prefetch" href="/Learning-things/assets/js/83.313a7e2f.js"><link rel="prefetch" href="/Learning-things/assets/js/84.fa7d4c61.js"><link rel="prefetch" href="/Learning-things/assets/js/85.6438bad3.js"><link rel="prefetch" href="/Learning-things/assets/js/86.a62a666e.js"><link rel="prefetch" href="/Learning-things/assets/js/87.f394cd46.js"><link rel="prefetch" href="/Learning-things/assets/js/88.f44df010.js"><link rel="prefetch" href="/Learning-things/assets/js/89.73d8c9d1.js"><link rel="prefetch" href="/Learning-things/assets/js/9.671037e9.js"><link rel="prefetch" href="/Learning-things/assets/js/90.52cf78c2.js"><link rel="prefetch" href="/Learning-things/assets/js/91.7e7ab156.js"><link rel="prefetch" href="/Learning-things/assets/js/92.0d858ed7.js"><link rel="prefetch" href="/Learning-things/assets/js/93.7a2a0869.js"><link rel="prefetch" href="/Learning-things/assets/js/94.3ebb52f2.js"><link rel="prefetch" href="/Learning-things/assets/js/95.99e08407.js"><link rel="prefetch" href="/Learning-things/assets/js/96.8dcf711c.js"><link rel="prefetch" href="/Learning-things/assets/js/97.b3fbd78b.js"><link rel="prefetch" href="/Learning-things/assets/js/98.1de520f5.js"><link rel="prefetch" href="/Learning-things/assets/js/99.a01126b9.js">
+    <link rel="stylesheet" href="/Learning-things/assets/css/0.styles.c3860cfc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="GlobalLayout"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Learning-things/" class="home-link router-link-active"><img src="logo_hoon's_full.png" alt="Hoon's devlog" class="logo"> <span class="site-name can-hide">Hoon's devlog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/jeonghun-project/Learning-things" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/jeonghun-project/Learning-things" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>AWS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CS(computer science)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>DATABASE</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ErrorCase</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ShellScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>TIL</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>algorism</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>graphql</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Learning-things/graphql/apollo.html" class="sidebar-link">apollo</a></li><li><a href="/Learning-things/graphql/graphql.html" aria-current="page" class="active sidebar-link">graph.ql</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Learning-things/graphql/graphql.html#query" class="sidebar-link">query</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nest</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>node.js</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>php</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>project</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>react</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>shopify</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>swagger</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>typescript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue.js</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="graph-ql"><a href="#graph-ql" class="header-anchor">#</a> graph.ql</h1> <p>graph.ql에 대하여 알아보자.</p> <blockquote><p>A query language for your API</p></blockquote> <p>공식 홈페이지의 소개 제목이다. API를 위한 query 언어라는 말인데 우리는 현재는 표준화된 HTTPS 통신을 위한 REST API를 통해 API를 표준화하고 있었다.</p> <p>이제는 <code>graph.ql</code>이 이러한 API를 대신할 수 있는 것일까?</p> <p>클라이언트에서 필요한 것과 그렇지 않은 것을 정확하게 여구할 수 있다고 한다.</p> <p>여태의 API들을 생각해보면, 앤드포인트에 따라서 데이터의 호출을 나누고 내가 원하는 데이터를 만들기 위해서 <strong>다중으로 API를 호출</strong>하거나 <strong>더 많은 데이터를 받아올 수 밖에 없었다.</strong></p> <p><strong>하지만 <code>graph.ql</code>은 그렇지 않다.</strong></p> <p>홈페이지에 메인으로 소개하는 graph.ql 특징이다.</p> <ol><li><p><em>한번의 요청으로 많은 데이터 받기</em></p></li> <li><p><em>필요한 데이터만 요청하여 받기</em></p></li> <li><p><em>타입 시스템</em></p></li> <li><p><em>버전 관리가 필요없음</em></p></li></ol> <h2 id="query"><a href="#query" class="header-anchor">#</a> query</h2> <p>그렇담 graphql의 쿼리를 알아보자</p> <div class="language-json extra-class"><pre class="language-json"><code>query
+<span class="token punctuation">{</span>
+  hero <span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+====&gt;
+
+response
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;hero&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>이렇게 쿼리를 사용해볼 수 있다.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  hero <span class="token punctuation">{</span>
+    name
+    # Queries can have comments!
+    friends <span class="token punctuation">{</span>
+      name
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+====&gt;
+
+response
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;hero&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;friends&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Han Solo&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Leia Organa&quot;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>스키마에 서명 그대로 전체 데이터를 조회하는 방법으로 기본 쿼리는 작동한다.</p> <p>이 뿐만으로도 이미 기존의 통신을 대체하기에는 충분하지만</p> <h3 id="arguments"><a href="#arguments" class="header-anchor">#</a> Arguments</h3> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  human(id<span class="token operator">:</span> <span class="token string">&quot;1000&quot;</span>) <span class="token punctuation">{</span>
+    name
+    height
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+====&gt;
+
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;human&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;height&quot;</span><span class="token operator">:</span> <span class="token number">1.72</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>이렇게 인자를 전달함으로서 특정 데이터를 조회하는 것 또한 가능하다.</p> <p>나아가서</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  human(id<span class="token operator">:</span> <span class="token string">&quot;1000&quot;</span>) <span class="token punctuation">{</span>
+    name
+    height(unit<span class="token operator">:</span> FOOT)
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+====&gt;
+
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;human&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;height&quot;</span><span class="token operator">:</span> <span class="token number">5.6430448</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>이런것도 가능하다.</p> <h3 id="aliases-별칭"><a href="#aliases-별칭" class="header-anchor">#</a> Aliases (별칭)</h3> <p>데이터의 이름이 겹칠때 원하는 데이터를 정확히 받아오기 위해서 사용해보자</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  empireHero<span class="token operator">:</span> hero(episode<span class="token operator">:</span> EMPIRE) <span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+  jediHero<span class="token operator">:</span> hero(episode<span class="token operator">:</span> JEDI) <span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+====&gt;
+
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;empireHero&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jediHero&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="fragments"><a href="#fragments" class="header-anchor">#</a> Fragments</h3> <p>우리의 엡은 상당히 복잡한 페이지를 가지고 있을수 있고, 같은 구조의 쿼리를 반복해서 요청해야 할 때가 있다.</p> <p>이러한 부분을 해결하도록 <code>graphql</code>은 <code>Fragments</code>를 지원한다.</p> <div class="language-json extra-class"><pre class="language-json"><code>
+<span class="token punctuation">{</span>
+  leftComparison<span class="token operator">:</span> hero(episode<span class="token operator">:</span> EMPIRE) <span class="token punctuation">{</span>
+    ...comparisonFields
+  <span class="token punctuation">}</span>
+  rightComparison<span class="token operator">:</span> hero(episode<span class="token operator">:</span> JEDI) <span class="token punctuation">{</span>
+    ...comparisonFields
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+​
+fragment comparisonFields on Character <span class="token punctuation">{</span>
+  name
+  appearsIn
+  friends <span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+===&gt;
+
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;leftComparison&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;appearsIn&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;NEWHOPE&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;EMPIRE&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;JEDI&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;friends&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Han Solo&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Leia Organa&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;C-3PO&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;rightComparison&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;appearsIn&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;NEWHOPE&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;EMPIRE&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;JEDI&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;friends&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Han Solo&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Leia Organa&quot;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Fragment내에서는 변수를 이용하여 쿼리를 요청할 수도 있는데 아래 코드를 살펴보자</p> <div class="language-graphql extra-class"><pre class="language-graphql"><code><span class="token keyword">query</span> <span class="token definition-query function">HeroComparison</span><span class="token punctuation">(</span><span class="token variable">$first</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token attr-name">leftComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">EMPIRE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+  <span class="token punctuation">}</span>
+  <span class="token attr-name">rightComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">JEDI</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fragment</span> <span class="token fragment function">comparisonFields</span> <span class="token keyword">on</span> <span class="token class-name">Character</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>
+  <span class="token property-query">friendsConnection</span><span class="token punctuation">(</span><span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token variable">$first</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">totalCount</span>
+    <span class="token object">edges</span> <span class="token punctuation">{</span>
+      <span class="token object">node</span> <span class="token punctuation">{</span>
+        <span class="token property">name</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;leftComparison&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;friendsConnection&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;totalCount&quot;</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;edges&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Han Solo&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Leia Organa&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;C-3PO&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;rightComparison&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;R2-D2&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;friendsConnection&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;totalCount&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;edges&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Luke Skywalker&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Han Solo&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Leia Organa&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Learning-things/graphql/apollo.html" class="prev">
+        apollo
+      </a></span> <span class="next"><a href="/Learning-things/javascript/10_구조 분해 할당 destructuring-assignment.html">
+        구조 분해 할당 (destructuring-assignment)
+      </a>
+      →
+    </span></p></div> </main></div> <footer class="siteFooter">
+    © Devlog from jeong
+  </footer></div><div class="global-ui"></div></div>
+    <script src="/Learning-things/assets/js/app.1db23252.js" defer></script><script src="/Learning-things/assets/js/2.beb24693.js" defer></script><script src="/Learning-things/assets/js/66.ffd4dd59.js" defer></script>
+  </body>
+</html>
