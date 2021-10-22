@@ -57,4 +57,8 @@ nestJS를 통한 서버구현을 할 수 있었는데, 좋은 경험이 되었�
 
 ### 이후 스터디가 필요한 내역
 
-Redis에 대한 공부, 테스트 코드 및, mock Server 구성에 대한 지식 등이 되겠다.
+- redis
+- 테스트 코드
+- mock Server 구성
+- mongodb Deloy
+- server system에 대한 이해
