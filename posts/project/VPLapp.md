@@ -19,21 +19,21 @@
 
 ### 새로 알게된 것
 
-Server 개발시에 MSA 아키텍쳐에 대한 고민을 할 수 있었다.
-
-MQ를 이용한 Event-Driven을 이용한 시스템을 어떻게 구현할 수 있는지 알 수 있었다.
-
-Graphql을 사용하여 쿼리를 작성하고 서버를 구현할 수 있는 경험을 할 수 있었다.
-
-MongoDB에 대하여 조금더 깊이 이해 할 수 있었다.
-
-nestJS를 통한 서버구현을 할 수 있었는데, 좋은 경험이 되었다.
-- TS를 통한 OOP를 가장 잘 구현할수 있는 구조로 이루어진 Server Framework로서 코드의 가독성을 높여준다.
-- 위의 이유로 확장성 및 유지 관리를 용이하게 도와준다.
-- Graphql, OPENAPI, MQ, KAFKA, QUQUE, 스케줄러 등등 다양한 모듈을 손쉽게 Import 할 수 있는 장점이 있다.
-  - 세팅의 충돌이 없도록 모듈관리에 대한 편의를 제공한다.
-  - Inject, Decorator를 통해 간단히 instance를 만들어 사용한다.
-- php - laravel, Java - spring, node - nestJS처럼 대표적인 Server Framework가 될 것이라고 생각된다.
+1. Server 개발시에 MSA 아키텍쳐에 대한 고민을 할 수 있었다.
+   
+2. MQ를 이용한 Event-Driven을 이용한 시스템을 어떻게 구현할 수 있는지 알 수 있었다.
+   
+3. Graphql을 사용하여 쿼리를 작성하고 서버를 구현할 수 있는 경험을 할 수 있었다.
+   
+4. MongoDB에 대하여 조금더 깊이 이해 할 수 있었다.
+   
+5. nestJS를 통한 서버구현을 할 수 있었는데, 좋은 경험이 되었다.
+   - TS를 통한 OOP를 가장 잘 구현할수 있는 구조로 이루어진 Server Framework로서 코드의 가독성을 높여준다.
+   - 위의 이유로 확장성 및 유지 관리를 용이하게 도와준다.
+   - Graphql, OPENAPI, MQ, KAFKA, QUQUE, 스케줄러 등등 다양한 모듈을 손쉽게 Import 할 수 있는 장점이 있다.
+     - 세팅의 충돌이 없도록 모듈관리에 대한 편의를 제공한다.
+     - Inject, Decorator를 통해 간단히 instance를 만들어 사용한다.
+   - php - laravel, Java - spring, node - nestJS처럼 대표적인 Server Framework가 될 것이라고 생각된다.
 
 ### 아쉬운 점
 
