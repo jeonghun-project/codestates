@@ -1,6 +1,8 @@
 # VPLapp
 
-> 사내에서 사용할 작은 Admin page SHOPIFY - VPL 통하여 제품을 소실하여 판매할 수 있도록하는 사내 APP
+> 사내에서 사용할 작은 Admin page 
+> 
+> SHOPIFY - VPL 통하여 제품을 판매할 수 있도록돕는 사내 App
 
 자사몰들의 상품관리 및 주문 수령 Store 관리를 위한 것으로 Shopify를 이용하고 있다.
 
