@@ -7,15 +7,10 @@
 ## 대표적인 기능
 
 1. Service dicovery and load balancing - 서비스 검색 및 로드 벨런싱 DNS나 IP주소를 사용하여 컨테이너를 토출 할 수 있다.
-
 2. Storage orchestration - 스토리지 시스템 탑재
-
 3. Automated rollouts and rollbacks - 자동으로 배포의 속도 및 상태에 대한 조절이 이루어지도록 할 수 있다.
-
 4. Automaic bin packing - node cluster를 제공받을 수 있다.
-
 5. Self-healing - 실패한 컨테이너를 다시 시작하고, 교체학, 종료하고, 준비가 될 때까지 클라이언트에게 응답하지 않을 수 있다.
-
 6. Secret and configuration management - 비밀번호 Oauth, SSH key 등등 민감함 정보를 저장 관리, 컨테이너 이미지 다시 빌드하지 않고 배포 업데이트 할 수 있다.
 
 ![kubernetes](./src/components-of-kubernetes.svg)
@@ -29,7 +24,7 @@
 
 ## Cluster
 
-![cluster](./src/module_01_cluster.svg)
+![cluster](./src/module-cluster.svg)
 
 - Control Plane
     cluster를 managing 한다. 어플리케이션 상태, 스케일 업, 업데이트 롤 아웃, 어플리케이션 예약 등의 cluster의 모든 활동을 조정하는 역활
@@ -41,7 +36,7 @@
 
 ## Deploy
 
-![Deploy](./src/module_02_first_app.svg)
+![Deploy](./src/module-first-app.svg)
 
 - kubernetes는 자가 치유적인 메커니즘을 제공합니다.
 - 인스턴스를 호스팅하는 노드가 다움되거나 삭제되면 배포 controller는 해당 인스턴스를 크러스터의 다른 노드에 있는 인스턴스로 교체합니다.
@@ -57,8 +52,8 @@ Cluster 내부는 사설 네트워크로 통신을 전달항 프록시를 만들
 
 `kubectl proxy` => `127.0.0.1:8001`
 
-```bash
- $curl http://localhost:8001/version
+<!-- ```sh
+ $ curl http://localhost:8001/version
 
  {
   "major": "1",
@@ -72,7 +67,7 @@ Cluster 내부는 사설 네트워크로 통신을 전달항 프록시를 만들
   "platform": "linux/amd64"
   ...
  }
-```
+<!-- ``` --> -->
 
 API server는 `Pod`이름을 기반으로 프록시를 통해 액세스할 수 있는 각 Pod에 대한 엔드포인트를 자동으로 생성한다.
 
@@ -88,7 +83,7 @@ API server는 `Pod`이름을 기반으로 프록시를 통해 액세스할 수 �
 
 ## Pods
 
-![Pods](./src/module_03_pods.svg)
+![Pods](./src/module-pods.svg)
 
 `Pod`는 하나의 도커 컨테이너라고 말할수있다. 공식 문서에는 컨테이너에 대한 일부 공유 리소스 혹은 하나이상의 어플리케이션 컨테이너의 Kubernetes의 추상화라고 한다. 즉 리소스 그룹 or 어플리케이션 컨테이너가 되겠다.
 
@@ -112,7 +107,7 @@ API server는 `Pod`이름을 기반으로 프록시를 통해 액세스할 수 �
 
 Node는 Control plane에 의하여 제어되고, Cluster의 노드 전체에서 Pod의 스케줄링을 자동으로 처리한다.
 
-![Node](./src/module_03_nodes.svg)
+![Node](./src/module-nodes.svg)
 
 - Kubelet : API를 통한 Control plane과 node간의 통신을 통하여 managees the Pods and the containers running on a machine.
 - Container runtime : 기본적으로 docker와 같은 컨테이너의 런타임 환경
@@ -123,9 +118,9 @@ Node는 Control plane에 의하여 제어되고, Cluster의 노드 전체에서 
 
 이때 Pod에는 Container가 하나만 있으므로 컨테이너의 이름을 생략 할 수 있다.
 
-`kubectl exec -ti $POD_NAME -- bash`
+`kubectl exec -ti $POD_NAME -- sh`
 
-Container bash shell 실행하기
+Container sh shell 실행하기
 
 ## Servcie Expose App
 
@@ -152,13 +147,13 @@ Service를 통해 어플리케이션이 트레픽을 수신할 수 있다. `Serv
 
 [더 자세한 내용](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
 
-### `Service and Labels`
+### Service and Labels
 
 위에서 Service에 대한 설명으로 Pod 집합의 트래픽을 라우팅하는 역할을 한다고 이해했다.
 
 Service는 알아서 Pod가 중단되고 복제되는 것을 추상화하고, 어플리케이션에 영향을 주지않고 이를 수행한다.
 
-한 어플리케이션의 Frontend 와 Backend간의 검색 및 라우팅을 Service에서 처리한다.
+한 어플리케이션의 **Frontend 와 Backend간의 검색 및 라우팅을 Service에서 처리한다.**
 
 `Service`는 논리적 작업을 허용하는 그룹화 기본 요소로 `label` `selector`를 이용하여 `Pod`집합을 찾아낸다.
 
@@ -168,19 +163,19 @@ Service는 알아서 Pod가 중단되고 복제되는 것을 추상화하고, �
 - Dev, test, Prod 등의 상태
 - tag를 사용한 개체 분류
 
-![label](./src/module_04_labels.svg)
+![label](./src/module-labels.svg)
 
-```bash
-$kubectl get services
+ ```sh
+$ kubectl get services
 
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   43s
 ```
 
-```bash
-$kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+```sh
+$ kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
 
-$kubectl get service
+$ kubectl get service
 
 NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP          2m
@@ -189,8 +184,8 @@ kubernetes-bootcamp   NodePort    10.98.181.26   <none>        8080:30030/TCP   
 
 외부로 열린 포트를 확인하는 방법
 
-```bash
-$kubectl describe services/kubernetes-bootcamp
+```sh
+$ kubectl describe services/kubernetes-bootcamp
 
 Name:                     kubernetes-bootcamp
 Namespace:                default
@@ -212,23 +207,23 @@ Events:                   <none>
 
 노드 포트 값이 할당된 NODE_PORT라는 환경 변수를 만듭니다.
 
-```bash
-$export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
-$echo NODE_PORT=$NODE_PORT
+```sh
+$ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+$ echo NODE_PORT=$NODE_PORT
 
 NODE_PORT=30030
 ```
 
 외부로 노출된 PORT에 잘 접근되는지 확인할 수 있다.
 
-```bash
-$curl $(minikube ip):$NODE_PORT
+```sh
+$ curl $(minikube ip):$NODE_PORT
 ```
 
 자동으로 Pod에 대한 Label을 만들었습니다.
 
-```bash
-$kubectl describe deployment
+```sh
+$ kubectl describe deployment
 
 ...
 Labels: app=kubernetes-bootcamp
@@ -237,8 +232,8 @@ Labels: app=kubernetes-bootcamp
 
 목록중에 쿼리를 할 수 있다.
 
-```bash
-$kubectl get pods -l app=kubernetes-bootcamp
+```sh
+$ kubectl get pods -l app=kubernetes-bootcamp
 
 NAME                                  READY   STATUS    RESTARTS   AGE
 kubernetes-bootcamp-fb5c67579-j8knz   1/1     Running   0          6m58s
@@ -246,8 +241,8 @@ kubernetes-bootcamp-fb5c67579-j8knz   1/1     Running   0          6m58s
 
 서비스 쿼리도 가능하다.
 
-```bash
-$kubectl get services -l app=kubernetes-bootcamp
+```sh
+$ kubectl get services -l app=kubernetes-bootcamp
 
 NAME                  TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 kubernetes-bootcamp   NodePort   10.96.217.250   <none>        8080:30014/TCP   4m46s
@@ -255,7 +250,7 @@ kubernetes-bootcamp   NodePort   10.96.217.250   <none>        8080:30014/TCP   
 
 Pod name을 환경 변수에 담아보자
 
-```bash
+```sh
 $ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 $ echo Name of the Pod: $POD_NAME
 Name of the Pod: kubernetes-bootcamp-fb5c67579-j8knz
@@ -263,12 +258,12 @@ Name of the Pod: kubernetes-bootcamp-fb5c67579-j8knz
 
 새로운 label 부여하기
 
-```bash
+```sh
 $ kubectl label pods $POD_NAME version=v1
 pod/kubernetes-bootcamp-fb5c67579-j8knz labeled
 ```
 
-```bash
+```sh
 $ kubectl describe pods $POD_NAME
 ...
 Labels:       app=kubernetes-bootcamp
@@ -277,39 +272,38 @@ Labels:       app=kubernetes-bootcamp
 ...
 ```
 
-```bash
-kubectl get pods -l version=v1
+```sh
+$ kubectl get pods -l version=v1
 NAME                                  READY   STATUS    RESTARTS   AGE
 kubernetes-bootcamp-fb5c67579-j8knz   1/1     Running   0          11m
 ```
 
-`delete`
-
-```bash
+```sh
 $ kubectl delete service -l app=kubernetes-bootcamp
 service "kubernetes-bootcamp" deleted
 ```
 
-```bash
+```sh
 $ kubectl get services
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   14m
 ```
 
-```bash
+```sh
 $ curl $(minikube ip):$NODE_PORT
 curl: (7) Failed to connect to 172.17.0.25 port 30014: Connection refused
 ```
 
-```bash
+```sh
 $ kubectl exec -ti $POD_NAME -- curl localhost:8080
-Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-fb5c67579-j8knz | v=1
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-fb5c67579-j8knz | v=1 
 ```
 
 ## Scaling overview
 
-![scale_out](./src/module_05_scaling1.svg)
-![scale_out2](./src/module_05_scaling2.svg)
+![scale_out](./src/module-scaling1.svg)
+
+![scale_out2](./src/module-scaling2.svg)
 
 스케일 아웃을 통해 사용가능한 리소스가 있는 노드에 Pod가 생성되고 예약됩니다.
 
