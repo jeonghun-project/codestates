@@ -316,7 +316,7 @@ Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-fb5c67579-j8knz | v
 
 스케일 아웃을 통해 사용가능한 리소스가 있는 노드에 Pod가 생성되고 예약됩니다.
 
-Kubernetes는 Autoscaling을 지원하지만 여기서는 다루지 않습니다.
+**Kubernetes는 Autoscaling을 지원하지만 여기서는 다루지 않습니다.**
 
 애플리케이션의 여러 인스턴스를 실행하려면 모든 인스턴스에 트래픽을 분산하는 방법이 필요하다.
 
