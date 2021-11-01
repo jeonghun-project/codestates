@@ -7,10 +7,15 @@
 ## 대표적인 기능
 
 1. Service dicovery and load balancing - 서비스 검색 및 로드 벨런싱 DNS나 IP주소를 사용하여 컨테이너를 토출 할 수 있다.
+   
 2. Storage orchestration - 스토리지 시스템 탑재
+   
 3. Automated rollouts and rollbacks - 자동으로 배포의 속도 및 상태에 대한 조절이 이루어지도록 할 수 있다.
+   
 4. Automaic bin packing - node cluster를 제공받을 수 있다.
+   
 5. Self-healing - 실패한 컨테이너를 다시 시작하고, 교체학, 종료하고, 준비가 될 때까지 클라이언트에게 응답하지 않을 수 있다.
+   
 6. Secret and configuration management - 비밀번호 Oauth, SSH key 등등 민감함 정보를 저장 관리, 컨테이너 이미지 다시 빌드하지 않고 배포 업데이트 할 수 있다.
 
 ![kubernetes](./src/components-of-kubernetes.svg)
@@ -52,7 +57,7 @@ Cluster 내부는 사설 네트워크로 통신을 전달항 프록시를 만들
 
 `kubectl proxy` => `127.0.0.1:8001`
 
-<!-- ```sh
+ ```bash
  $ curl http://localhost:8001/version
 
  {
@@ -67,19 +72,23 @@ Cluster 내부는 사설 네트워크로 통신을 전달항 프록시를 만들
   "platform": "linux/amd64"
   ...
  }
-<!-- ``` --> -->
+```
 
 API server는 `Pod`이름을 기반으로 프록시를 통해 액세스할 수 있는 각 Pod에 대한 엔드포인트를 자동으로 생성한다.
 
 먼저 Pod 이름을 가져와야 하고 POD_NAME 환경 변수에 저장합니다.
 
-`xport POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')`
+```bash
+$ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 
-`echo Name of the Pod: $POD_NAME`
+$ echo Name of the Pod: $POD_NAME
+```
 
 이제 API server를 통해 Pod에 접근 할 수 있습니다.
 
-`curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/`
+```bash
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
+```
 
 ## Pods
 
