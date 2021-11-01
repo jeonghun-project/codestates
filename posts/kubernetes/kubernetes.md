@@ -1,4 +1,4 @@
-# kubernetes
+# Kubernetes
 
 **k8s**라고도 불려진다. CI/CD 도구중에 하나라고 볼 수 있으며, MSA Achitecture에서 빼놓을 수 없는 잦은 배포를 감당할 수 있는 CI/CD를 구성하기에 적합한 Service입니다.
 
