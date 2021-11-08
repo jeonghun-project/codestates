@@ -150,7 +150,7 @@ b2b3638cb8c6   images-tag:latest   "docker-entrypoint.s…"   26 seconds ago   U
 
 > 이 부분은 Docker hub에 대한 이해를 돕는 부분이다.
 
-**Docker hub계정이 있고 이미 사용경험이 있다면 과감히 건너띄는 것을 권장한다.**
+**Docker hub계정이 있고 이미 사용경험이 있다면 과감히 건너뛰는 것을 권장한다.**
 
 - 우선 Docker hub를 이용하기 위해 *Docker hub 계정을 만들고 로그인해보자*
 
@@ -158,7 +158,7 @@ b2b3638cb8c6   images-tag:latest   "docker-entrypoint.s…"   26 seconds ago   U
 
   ![example2](./src/dockekHub.png)
 
-- 이렇게 자신의 dockerhub에 잘 들어가 졌다면이제 image를 Push 해보자
+- 이렇게 자신의 **docker hub**에 잘 들어가 졌다면이제 image를 Push 해보자
 
   ```bash
   $ docker push <Username>/<image>:<image-tag>
@@ -215,7 +215,7 @@ b2b3638cb8c6   images-tag:latest   "docker-entrypoint.s…"   26 seconds ago   U
 
 ## Docker Github Action으로 배포하기 
 
-이제 Docker와 Docker hub에 대하여 알아보았으니 이를 CI/CD를 입혀보자.
+이제 `Docker`와 `Docker hub`에 대하여 알아보았으니 이를 CI/CD를 입혀보자.
 
 - CircleCI
 - gitlab
@@ -369,5 +369,89 @@ b2b3638cb8c6   images-tag:latest   "docker-entrypoint.s…"   26 seconds ago   U
   
 ## Docker-compose
 
-  여기서 Docker-compose에 대해서 자세히 다뤄보자.
+여기서 Docker-compose에 대해서 자세히 다뤄보자.
 
+**`Compose`는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다.**
+ `.yml`확장자를 이용하여 **YAML 파일을 사용하여 어플리케이션 서비스를 구성**할 수 있다.
+
+Docker compose가 제공하는 효과적인 기능에 대하여 알아보자
+
+ - **![단일 호스트에서 여러 개의 격리된 환경 구성](1.단일 호스트엣 여러 개의 격리된 환경 구성)**
+ - **컨테이너 생성 시 볼륨 데이터 보존**
+ - **변경된 Container만 재셍성**
+ - **환경 간의 변수와 컴포지션 이동**
+
+ 1. **단일 호스트에서 여러 개의 격리된 환경 구성**
+
+    `Compose`는 프로젝트 이름을 사용하여 환경을 서로 독립적으로 실행한다. 여러 다른 Context에서 이프로젝트 이름을 사용할 수 잇다. **예를 들어보자**
+
+    - Dev Host에서 프로젝트의 각 기능 분기에 대해 안정적인 복사본을 실행하려는 경우처럼 하나의 환경의 여러 복사본을 만들기 위해사용할 수 있다.
+    - CI Server 환경에서 빌드가 서로 간섭하지 않도록 하려면 프로젝트 이름을 고유한 빌드 번호로 설정할 수 있다.
+    - 공유 Host 또는 Dev Host 환경에서 동일한 서비스 이름을 사용할 수 있는 다른 프로젝트가 서로 간섭하는 것을 방지
+
+2. 컨테이너 생성 시 볼륨 데이터 보존
+   
+   `Compose`는 서비스에서 사용하는 모든 볼륨을 보존한다. `docker-compose up`이 실행될 때 **이전 실행에서 컨텡너를 찾으면 이전 컨테이너에서 새 컨테이너로 볼륨을 복사**합니다.
+   
+   이 프로세스는 볼륨에서 생성한 모든 데이터가 손실되지 않도록 합니다.
+
+3. 변경된 Container만 재생성
+
+   `Compose`는 컨테이너를 만드는 데 사용된 구성을 캐싱한다. 변경되지 않은 서비스는 다시 시작할 때 기존의 컨테이너를 재사용한다. 우린 덕분에 **빠르게 환경을 구성하고 변경할 수 있다.**
+
+4. 환경 간의 변수와 컴포지션 이동
+  
+   `Compose`는 `Compose 파일의 변수를 지원한다. 이러한 변수를 사용함으로서 **다양한 환경 또는 다른 사용자에맞는 구성을 사용자가 지정할 수 있다.**
+
+위 내용을 간단히 이해 한다면 어떤때에 `Compose`를 구성하면 좋을지 전략을 세울수 있다.
+
+본론으로 들어가서 **컴포저 구성**은 어떻게 하였는지 함께 살펴보자
+
+Compose 파일에서는 **Service, NetWork, Volume**을 정의한다.
+
+파일 명세의 자세한 내용은 워낙에 방대하니 따로 다루지 않겠다.*[자세한 내용은 홈페이지를 참고](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+
+```yml
+version: '3'
+
+services:
+  devserver:
+    image: USER_NAME/IMAGE_NAME:TAG
+    container_name: devserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+      - /code/node_modules
+    networks:
+      - app-network
+    ports:
+      - 4000:4000
+
+  web:
+    image: nginx:mainline-alpine
+    container_name: nginx
+    restart: on-failure:30
+    tty: true
+    volumes:
+      - ./templates:/etc/nginx/conf.d
+    ports:
+      - '80:80'
+    networks:
+      - app-network
+    depends_on:
+      - devserver
+
+networks:
+  app-network:
+    driver: bridge
+```
+
+이렇게 만들어둔 `docker-compose.yml`을 scp를 통하여 복사하고, 복사한 Compose를 `docker-compose up`을 통하여 실행한 것이다.
+
+현재 작성자의 환경은 Digitalocean에 Droplet을 이용한 DevServer환경임을 참고하자.
+
+AWS라면 NGiNX 없이 구성할 수 있지만 이런 경우에는 권한과 key관리 문제가 있을수 있으니 참고하자.
+
+이상으로 Docker - github action - digitaloean - nginx 를 적절히 사용하여 배포하는 node 환경 서버에 대하여 알아보았다.
