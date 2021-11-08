@@ -87,7 +87,7 @@ kubernetes-bootcamp-7d44784b7c-xg5sg   1/1     Running   0          4m43s
 
 4. Service 에 노출된 PORT를 확인하자
 
-```bsah
+```bash
 $ kubectl describe services/kubernetes-bootcamp
 
 Name:                     kubernetes-bootcamp
@@ -107,3 +107,109 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 ```
+
+5. 환경 변수로 포트를 입력하고
+
+```bash
+$ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+$ echo NODE_PORT=$NODE_PORT
+NODE_PORT=30433
+```
+
+6.  curl을 통해서 버전을 확인해보면
+
+```bash
+$ curl $(minikube ip):$NODE_PORT
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7d44784b7c-n5tf6 | v=2
+```
+
+7. `rollout status`를 통해서 rolling update 상태도 확인 할 수 있다.
+
+```bash
+$ kubectl rollout status deployments/kubernetes-bootcamp
+deployment "kubernetes-bootcamp" successfully rolled out
+```
+
+이제 Pod를 describe 해보면 image가 변한 것을 알 수 있다.
+
+```bash
+$ kubectl describe pods
+
+Image:          jocatalin/kubernetes-bootcamp:v2
+```
+
+## 이제 Rollback을 살펴보자
+
+V10 태그 이미지를 배포하고 다시 돌아와보도록하자
+
+```bash
+$ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10
+tes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10et
+deployment.apps/kubernetes-bootcamp image updated
+```
+
+```bash
+$ kubectl get deployments
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   3/4     2            3           16m
+```
+
+```bash
+$ kubectl get pods
+NAME                                   READY   STATUS             RESTARTS   AGE
+kubernetes-bootcamp-59b7598c77-hw9ks   0/1     ImagePullBackOff   0          57s
+kubernetes-bootcamp-59b7598c77-k87wm   0/1     ImagePullBackOff   0          58s
+kubernetes-bootcamp-7d44784b7c-7gw8j   1/1     Running            0          11m
+kubernetes-bootcamp-7d44784b7c-h9gq5   0/1     Terminating        0          11m
+kubernetes-bootcamp-7d44784b7c-n5tf6   1/1     Running            0          11m
+kubernetes-bootcamp-7d44784b7c-xg5sg   1/1     Running            0          11m
+```
+
+`ImagePullBackOff`가 발생한 것을 알 수 있습니다.
+
+```bash
+$ kubectl describe pods
+
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  2m42s                default-scheduler  Successfully assigned default/kubernetes-bootcamp-59b7598c77-k87wm to minikube
+  Normal   BackOff    76s (x6 over 2m36s)  kubelet            Back-off pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Normal   Pulling    65s (x4 over 2m38s)  kubelet            Pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed     64s (x4 over 2m37s)  kubelet            Failed to pull image "gcr.io/google-samples/kubernetes-bootcamp:v10": rpc error: code = Unknown desc = Error response from daemon: manifest for gcr.io/google-samples/kubernetes-bootcamp:v10 not found: manifest unknown: Failed to fetch "v10" from request "/v2/google-samples/kubernetes-bootcamp/manifests/v10".
+  Warning  Failed     64s (x4 over 2m37s)  kubelet            Error: ErrImagePull
+  Warning  Failed     50s (x7 over 2m36s)  kubelet            Error: ImagePullBackOff
+
+...
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  13m   default-scheduler  Successfully assigned default/kubernetes-bootcamp-7d44784b7c-7gw8j to minikube
+  Normal  Pulled     13m   kubelet            Container image "jocatalin/kubernetes-bootcamp:v2" already present on machine
+  Normal  Created    13m   kubelet            Created container kubernetes-bootcamp
+  Normal  Started    13m   kubelet            Started container kubernetes-bootcamp
+```
+
+이럴 경우 롤백을 시행 할 수 있다.
+
+`rollout undo`
+
+```bash
+$ kubectl rollout undo deployments/kubernetes-bootcamp
+deployment.apps/kubernetes-bootcamp rolled back
+```
+
+이제 Pod 상태를 살펴보자
+
+```bash
+$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-59b7598c77-hw9ks   0/1     Terminating   0          6m23s
+kubernetes-bootcamp-59b7598c77-k87wm   0/1     Terminating   0          6m24s
+kubernetes-bootcamp-7d44784b7c-7gw8j   1/1     Running       0          16m
+kubernetes-bootcamp-7d44784b7c-b484r   1/1     Running       0          14s
+kubernetes-bootcamp-7d44784b7c-n5tf6   1/1     Running       0          16m
+kubernetes-bootcamp-7d44784b7c-xg5sg   1/1     Running       0          16m
+```
+
+이제 전체 Pods는 안정적인 V2 버전의 image를 사용하도록 되었다.
