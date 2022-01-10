@@ -188,7 +188,7 @@ func main() {
 
 ### For
 
-반복문이다.
+반복문이다. golang의 반복문에는 ()가 없다.
 
 ```go
 func main() {
@@ -200,5 +200,143 @@ func main() {
 }
 ```
 
+go에서는 최기 값이나 상태변화등을 생략할 수 있다.
 
+```go
+func main() {
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum) // 1024
+}
+```
 
+세미콜론은 생략이 가능하다
+
+```go
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+
+무한루프
+
+```go
+func main() {
+	for {
+	}
+}
+```
+
+### if
+
+if문은 for 문과 마찬가지로 ()를 명시하지 않는다.
+
+```go
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+
+func main() {
+	fmt.Println(sqrt(2), sqrt(-4))
+}
+```
+
+go의 if문은 다른 언어의 if 문과는 약간의 차이가 있습니다.
+
+최초에 약간의 실행문을 포함할 수 있습니다.
+
+```go
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
+}
+
+func main() {
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
+}
+```
+
+단 여기서 선언된 v 변수의 경우 if else 문 안에서만 스코프를 가지며 유효하다.
+
+### switch
+
+if - else 문을 완성하는 더 짧은 구문이다.
+
+```go
+func main() {
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+}
+```
+
+PHP, Javascript에서 사용하는 Switch와는 다르게 break문을 사용하지 않아도, 선택된 경우에만 실행 됩니다.
+
+또한 상수일 필요나 정수일 필요가 없다.
+
+```go
+func main() {
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday() + 2
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today.")
+	case today + 1:
+		fmt.Println("Tomorrow.")
+	case today + 2:
+		fmt.Println("In two days.")
+	default:
+		fmt.Println("Too far away.")
+	}
+}
+```
+
+위에서 아래로 평가하고 케이스가 성공하면 중지합니다.
+
+```go
+func main() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+```
+
+`if-then-else`를 깔끔하게 작성하기 위해서 Switch 컨디션을 `true`로 둘 수도 있다.
+
+```go
+func main() {
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+	// hello
+	// world
+}
+```
