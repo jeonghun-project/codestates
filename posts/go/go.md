@@ -1,4 +1,4 @@
-# Golang
+# Golang-basic
 
 고랭에 대한 스터디를 정리하기 위한 ㄸㄱ입니다.
 
@@ -340,3 +340,21 @@ func main() {
 	// world
 }
 ```
+
+## defer
+
+defer 키워드가 할당되어 실행되는 실행줄의 경우 다른 실행줄이 다 실행된 후에 마지막에 실행된다.
+
+```go
+func main() {
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+}
+```
+
+`defer`는 stack에 작업을 할당하고, **후입선출의** 순서로 리턴한다.
