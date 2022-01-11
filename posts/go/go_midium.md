@@ -428,8 +428,51 @@ func main() {
 }
 ```
 
+## higher function
+
+function values 함수는 변수 처럼 사용할 수 있습니다.
+
 ```go
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
 
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12)) // 13
 
+	fmt.Println(compute(hypot)) // 5 
+	fmt.Println(compute(math.Pow)) // 81
+}
+```
 
+## Closures
+
+Go 함수는 클로저일 수 있다.
+
+클로저는 본문 외부의 변수를 참조하는 함수 값입니다. 함수는 참조된 변수에 엑세스하고 할당할 수 있다.
+
+이러한 의미에서 함수는 변수에 할당할 수 있다.
+
+```go
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+func main() {
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
+}
+```
 
