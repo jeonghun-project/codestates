@@ -229,3 +229,227 @@ func (v *Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 ```
+
+인타페이스의 암시적 표현
+
+```go
+type I interface {
+	M()
+}
+
+type T struct {
+	S string
+}
+
+// This method means type T implements the interface I,
+// but we don't need to explicitly declare that it does so.
+func (t T) M() {
+	fmt.Println(t.S)
+}
+
+func main() {
+	var i I = T{"hello"}
+	i.M()
+}
+```
+
+인터페이스 value
+
+```go
+type I interface {
+	M()
+}
+
+type T struct {
+	S string
+}
+
+func (t *T) M() {
+	fmt.Println(t.S)
+}
+
+type F float64
+
+func (f F) M() {
+	fmt.Println(f)
+}
+
+func main() {
+	var i I
+
+	i = &T{"Hello"}
+	describe(i)
+	i.M()
+
+	i = F(math.Pi)
+	describe(i)
+	i.M()
+}
+
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+```
+
+기본값이 nil인 인터페이스 값
+
+
+```go
+type I interface {
+	M()
+}
+
+type T struct {
+	S string
+}
+
+func (t *T) M() {
+	if t == nil {
+		fmt.Println("<nil>")
+		return
+	}
+	fmt.Println(t.S)
+}
+
+func main() {
+	var i I
+
+	var t *T
+	i = t
+	describe(i) // (<nil>, *main.T)
+	i.M() // <nil>
+
+	i = &T{"hello"}
+	describe(i) // (&{hello}, *main.T)
+	i.M() // hello
+}
+
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+```
+
+아래 코드는 런타임 에러난다. nill Interface는 값 혹은 정확한 type을 가지지 않는다.
+
+`invalid memory address or nil pointer dereference` 잘못된 메모리 주소에러 혹은 nill Pointer error 가 발생한다.
+
+```go
+type I interface {
+	M()
+}
+
+func main() {
+	var i I
+	describe(i)
+	i.M()
+}
+
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i) 
+}
+```
+
+## empty interface
+
+empty interface 빈 인터페이스는 알 수 없는 유형의 값을 처리하는 코드에서 사용한다.
+
+인터페이스 유형의 인수를 원하는 만큼 취급할 수 있다.
+
+```go
+func main() {
+	var i interface{}
+	describe(i) // (<nil>, <nil>)
+
+	i = 42
+	describe(i) // (42, int)
+
+	i = "hello"
+	describe(i) // (hello, string)
+}
+
+func describe(i interface{}) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+```
+
+## Type assertions
+
+interface 값의 기본 구체적인 값에 대한 액세스를 제공ㅎ나다.
+
+```go
+t := i.(T)
+```
+
+어썰션은 두가지 값을 리턴한다. 하나는 성공했는지 여부를 보고하는 부울 값과 기본 값이다.
+
+```go
+t, ok := i.(T)
+```
+
+이때 실제 i인터페이스가 값을 가지지 않으면 panic이 발생한다.
+
+```go
+func main() {
+	var i interface{} = "hello"
+
+	s := i.(string)
+	fmt.Println(s)
+
+	s, ok := i.(string)
+	fmt.Println(s, ok)
+
+	f, ok := i.(float64)
+	fmt.Println(f, ok)
+
+	f = i.(float64) // panic
+	fmt.Println(f)
+}
+```
+
+## type switch
+
+여러 유형 어설션을 허용하는 구조
+
+일반적인 switch 문과 유사하지만 type switch의 경우 type을 지정하고 해당 값은 지정된 인터페이스 값이 가진 값의 유형과 비교됩니다.
+
+```go
+switch v := i.(type) {
+case T:
+    // here v has type T
+case S:
+    // here v has type S
+default:
+    // no match; here v has the same type as i
+}
+```
+
+`i.(T)`와 동일한 구문을 가지고 특정 타입 Tsms keyword type으로 대체된다.
+
+```go
+func do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	default:
+		fmt.Printf("I don't know about type %T!\n", v)
+	}
+}
+
+func main() {
+	do(21)
+	do("hello")
+	do(true)
+}
+```
+
+## Stringer
+
+fmt의 내장 인터페이스 Stringer
+
+```go
+type Stringer interface {
+    String() string
+}
+```
