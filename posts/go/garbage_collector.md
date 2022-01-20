@@ -26,11 +26,11 @@ func main() {
 }
 ```
 
-![garbage_collector](src/garbage.png)
+![garbage_collector](./src/garbage.png)
 
 ### 가비지 컬렉터는 레퍼런스 카운트와 함수의 끝나는 구문을 확인한다.
 
-![garbage_collector](src/garbage2.png)
+![garbage_collector](./src/garbage2.png)
 
 ### a memory는 여전히 v라는 변수에서 refrence하고 있기 때문에 메모리에 남는다.
 
