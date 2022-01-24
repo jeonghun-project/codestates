@@ -1,5 +1,8 @@
 <template>
-  <div ref="comment"></div>
+
+  <div class="page">
+    <div ref="comment"></div>
+  </div>
 </template>
 <script>
 export default {
@@ -16,7 +19,7 @@ export default {
     utterances.setAttribute('repo',`jeonghun-project/blog-comment`); // 사용할 repository
 
     // script tag 삽입
-    window.document.getElementById('comment').appendChild(utterances);
+    this.$refs.comment.appendChild(utterances);
   }
 }
 </script>

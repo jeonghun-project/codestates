@@ -1,6 +1,8 @@
 <template>
   <div id="GlobalLayout">
-    <component :is="layout" />
+    <component :is="layout" >
+      
+    </component>
     <Comment />
     <footer class="siteFooter">
       &copy; Devlog from jeong
