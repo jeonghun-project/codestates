@@ -14,5 +14,6 @@ module.exports = {
     }],
     smoothScroll: true,
     sidebar: [...makeSidebar.makeTree()],
-  }
+  },
+  plugins: [["sitemap", { hostname: "https://jeonghun-project.github.io/Learning-things/" }]]
 }
