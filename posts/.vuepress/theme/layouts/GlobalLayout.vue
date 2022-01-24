@@ -1,6 +1,7 @@
 <template>
   <div id="GlobalLayout">
     <component :is="layout" />
+    <Comment />
     <footer class="siteFooter">
       &copy; Devlog from jeong
     </footer>
