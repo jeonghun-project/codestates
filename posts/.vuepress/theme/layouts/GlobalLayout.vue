@@ -9,7 +9,9 @@
 </template>
 
 <script>
+import Comment from '../components/Comment.vue'
 export default {
+  components: { Comment },
   computed: {
     layout () {
       if (this.$page.path) {

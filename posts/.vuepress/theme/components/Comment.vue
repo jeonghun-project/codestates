@@ -16,7 +16,7 @@ export default {
     utterances.setAttribute('repo',`jeonghun-project/blog-comment`); // 사용할 repository
 
     // script tag 삽입
-    this.$refs.comment.appendChild(utterances);
+    window.document.getElementById('comment').appendChild(utterances);
   }
 }
 </script>
