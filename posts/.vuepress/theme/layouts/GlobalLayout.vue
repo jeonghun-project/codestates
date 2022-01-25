@@ -1,7 +1,7 @@
 <template>
   <div>
     <ParentLayout>
-      <Comment slot="page-bottom" />
+      <Comment slot="page-bottom" v-if="isShowComment" />
     </ParentLayout>
     <footer  class="siteFooter">
       &copy; Devlog from jeong
@@ -24,6 +24,12 @@ export default {
         return 'Layout'
       }
       return 'NotFound'
+    },
+    isShowComment() {
+      if (this.$page.path === '/') {
+        return false
+      }
+      return true
     }
   }
 }
