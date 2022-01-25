@@ -1,10 +1,9 @@
 <template>
-  <div id="GlobalLayout">
-    <component :is="layout" >
-      
-    </component>
-    <Comment />
-    <footer class="siteFooter">
+  <div>
+    <ParentLayout>
+      <Comment slot="page-bottom" />
+    </ParentLayout>
+    <footer  class="siteFooter">
       &copy; Devlog from jeong
     </footer>
   </div>
@@ -12,8 +11,9 @@
 
 <script>
 import Comment from '../components/Comment.vue'
+import ParentLayout from '@parent-theme/layouts/Layout.vue'
 export default {
-  components: { Comment },
+  components: { Comment, ParentLayout },
   computed: {
     layout () {
       if (this.$page.path) {

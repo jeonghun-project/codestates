@@ -22,7 +22,7 @@ A **prefix** of a string `S` is any leading contiguous substring of `S`.
 
 ## 입출력 예
 
-![src/_2021-02-09__10.19.52.png](src/_2021-02-09__10.19.52.png)
+![src/_2021-02-09__10.19.52.png](./src/_2021-02-09__10.19.52.png)
 
 ```jsx
 var isPrefixOfWord = function(sentence, searchWord) {

@@ -1,11 +1,18 @@
 <template>
-
-  <div class="page">
-    <div ref="comment"></div>
+  <div v-if="isShowComment">
+    <div ref="comment" ></div>
   </div>
 </template>
 <script>
 export default {
+  computed: {
+    isShowComment() {
+      if (this.$page.path === '/') {
+        return false
+      }
+      return true
+    }
+  },
   mounted() {
     // script tag 생성
     const utterances = document.createElement('script');
