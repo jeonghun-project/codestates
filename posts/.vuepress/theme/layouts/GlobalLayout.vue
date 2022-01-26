@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ParentLayout>
+    <ParentLayout :is="layout">
       <Comment slot="page-bottom" v-if="isShowComment" />
     </ParentLayout>
     <footer  class="siteFooter">
