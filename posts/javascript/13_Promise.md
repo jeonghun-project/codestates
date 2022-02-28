@@ -127,7 +127,7 @@ asyncThing1().then(function() {
 })
 ```
 
-![PromiseChain](src/PromiseChain.png)
+![PromiseChain](./src/PromiseChain.png)
 
 mdn Error catch
 

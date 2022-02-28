@@ -23,7 +23,7 @@ URL, URI 따른 분기를 라우터라고 할 수 있다.
 
 ` scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]`
 
-![uri](src/uri.png)
+![uri](./src/uri.png)
 
 우리가 항상 주소창에서 보던 것들은 각각이 어떠한 역활을 하고 있었고, uri에 따른 화면의 변화나 데이터의 송수신을 할 수 있도록 HTTPS 통신의 주소로 이용되고 있었다.
 
