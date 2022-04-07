@@ -1,6 +1,6 @@
 # go-DeadLock
 
-golang에서는 concurrency 작업을 수행하기 위해서는 goroutinㄷ을 이용하여 작업을 수행한다.
+golang에서는 concurrency 작업을 수행하기 위해서는 goroutine을 이용하여 작업을 수행한다.
 
 이떄 channel을 통해서 Resource의 이동이 발생하게 하는데
 
