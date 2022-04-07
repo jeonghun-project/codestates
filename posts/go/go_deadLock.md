@@ -118,7 +118,7 @@ goroutine 프로세스에서 같은 데이터 Resource를 참조하다 보니 �
 
 **Mutex**: 뮤텍스입니다. 상호 배제(mutual exclusion)라고 하며 여러 스레드(고루틴)에서 공유되는 데이터를 보호할 때 주로 사용합니다.
 
-![go tour에서 설명하는 Mutex](https://go-tour-ko.appspot.com/concurrency/9)
+[go tour에서 설명하는 Mutex](https://go-tour-ko.appspot.com/concurrency/9)
 
 
 Mutex를 통해서 Resource를 어떻게 안정적으로 컨트롤할 수 있는지 살펴보도록 하자.
@@ -168,3 +168,30 @@ func main() {
 이러한 디버깅의 편리를 위해서 **`pprof`**를 통해 시각화된 정보로 흐름을 살펴보거나
 
 **`go-deadlock`**같은 패키지의 도움을 받을 수 있다.
+
+### go-deadlock
+
+[go-deadlock](https://github.com/sasha-s/go-deadlock)github repo에서 자세한 것을 알아볼 수 있다.
+
+goroutine의 Debbuging은 굉장한 Hell이라고 다들 입을 모아 말한다.
+
+go-deadlock은 그러한 문제들을 대부분을 로그를 통해 쉽게 해결할 수 있도록 돕는다.
+
+```
+POTENTIAL DEADLOCK: Inconsistent locking. saw this ordering in one goroutine:
+happened before
+inmem.go:623 bttest.(*server).ReadModifyWriteRow { r.mu.Lock() } <<<<<
+inmem_test.go:118 bttest.TestConcurrentMutationsReadModifyAndGC.func4 { _, _ = s.ReadModifyWriteRow(ctx, rmw()) }
+
+happened after
+inmem.go:629 bttest.(*server).ReadModifyWriteRow { tbl.mu.RLock() } <<<<<
+inmem_test.go:118 bttest.TestConcurrentMutationsReadModifyAndGC.func4 { _, _ = s.ReadModifyWriteRow(ctx, rmw()) }
+
+in another goroutine: happened before
+inmem.go:799 bttest.(*table).gc { t.mu.RLock() } <<<<<
+inmem_test.go:125 bttest.TestConcurrentMutationsReadModifyAndGC.func5 { tbl.gc() }
+
+happend after
+inmem.go:814 bttest.(*table).gc { r.mu.Lock() } <<<<<
+inmem_test.go:125 bttest.TestConcurrentMutationsReadModifyAndGC.func5 { tbl.gc() }
+```
