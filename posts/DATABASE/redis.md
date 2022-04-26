@@ -1,4 +1,4 @@
-# Redis
+# Redis - ZSets
 
 > 오픈소스 in-memory data store 입니다.
 
