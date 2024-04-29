@@ -108,3 +108,83 @@ contract MyToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit {
     }
 }
 ```
+
+굉장히 심플한 Staking 프로세스
+
+```sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "openzeppelin-solidity/contracts/utils/math/SafeMath.sol";
+
+contract SimpleStaking is ERC20 {
+    mapping(address => uint256) public staked;
+    mapping(address => uint256) public stakedFromTS;
+  
+    constructor() ERC20("Jaden Rich", "JR") {
+        _mint(msg.sender, 10000* 10**18);
+    }
+    
+
+    function stake(uint256 amount) external  {
+        require(amount > 0, "amount is <= 0");
+        require(balanceOf(msg.sender) >= amount, "balance is  <= amount");
+        _transfer(msg.sender, address(this), amount);
+        if (staked[msg.sender] > 0) {
+            claim();
+        }
+        stakedFromTS[msg.sender] = block.timestamp;
+        staked[msg.sender] += amount;
+    }
+
+    function unstake(uint256 amount) external {
+        require(amount >0, "amount is <= 0");
+        require(staked[msg.sender] >= amount, "amount is > staked");
+
+        claim();
+        staked[msg.sender] -= amount;
+        _transfer(address(this), msg.sender, amount);
+    }
+    
+    function claim() public {
+        require(staked[msg.sender] >0, "staked is <= 0");
+        uint256 secondsStaked = block.timestamp - stakedFromTS[msg.sender];
+        uint256 rewards = staked[msg.sender] * secondsStaked / 3.154e7;
+        _mint(msg.sender, rewards);
+        stakedFromTS[msg.sender] = block.timestamp;
+    }
+}
+```
+
+## CONSENSUS MECHANISMS
+
+합의 알고리즘이란 지분 증명, 작업 증명 권한 증명 프로토콜을 지칭
+분산된 노드 집합이 블록체인 상태에 동의 할 수 있도록 하는 아이디어 프로토콜 및 인센티브의 완전한 스택이다.
+
+기록이 진실되고 정직하다고 보장하는데 사용된다.
+
+
+### What is consensus
+
+합의란 의견차이가 없이 동의 하는 것을 뜻하고 이더리움 블록체인은 프로세스가 공식적으로 있으며 합의에 도달한다는 것은 네트워크의 노드 중 최소 66%가 네트워크의 글로벌 상태에 동의한다는 것을 의미한다.
+
+- PoW(Proof-of-work)
+
+    거래데이터는 수학문제를 풀어서 검증된 블록에 저장된다.
+    흔히 Mining이라고 부르는 작업이 진행된다. 문제를 해결한 최초의 채굴자에게 보상이 지급되었다.
+
+    비밀번호의 올바른 조합을 찾아내는 경쟁과 같은 것
+
+- PoS(Proof-of-Stack)
+
+    새 블록의 생성자는 네트워크 지분에 따라 검증인으로 설정되어 검증인으로서 참여한다.
+
+- PoA(Proof-of-Authority)
+
+    수정된 지분증명 소수의 증명된 검증자들만이 검증을 진행한다.
+
+이러한 합의 알고리즘들을 복합적으로 사용하기도 한다.
+
+참고 https://ethereum.org/ko/developers/docs/consensus-mechanisms/
+https://academy.binance.com/en/articles/what-is-a-blockchain-consensus-algorithm
