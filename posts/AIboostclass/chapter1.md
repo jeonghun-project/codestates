@@ -4,7 +4,7 @@
 
 - 데이터를 통해 해결하려는 문제에 대한 고찰
 
-![screenshot1](image.png)
+![screenshot1](./src/image.png)
 
 - 문제 정의
 
@@ -12,7 +12,7 @@
 
 2진 분류 문제
 
-![screenshot2](image-1.png)
+![screenshot2](./src/image-1.png)
 
 - 가설 -> 실험 -> 검증
 
@@ -34,7 +34,7 @@ Train, Valid, Test
 
 ### 분류 문제의 평가지표 도표
 
-![Alt text](image-2.png)
+![Alt text](./src/image-2.png)
 
 > Accuracy(암환자 예측같은데 부적합): 불균형한 데이터일 때 부적합함
 > Precision(스팸메일 분류): N를 P 잘 못 분류하면 안될때
@@ -51,8 +51,8 @@ Train, Valid, Test
 - FPR: FP/FP+TN
 - 0인 케이스에 대하여 1로 잘못 예측한 케이스
 
-![Alt text](image-3.png)
+![Alt text](./src/image-3.png)
 
 ### AUC
 
-![Auc](image-4.png)
+![Auc](./src/image-4.png)

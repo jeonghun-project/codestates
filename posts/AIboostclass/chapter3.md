@@ -22,21 +22,21 @@
 
 \+ Binning
 
-![alt text](image-8.png)
+![alt text](./src/image-8.png)
 
 
 스케일링 시에 모델에 영향을 줄 수 있다
 
-![alt text](image-9.png)
+![alt text](./src/image-9.png)
 
 
 Scaling + Distribution
 
-![alt text](image-10.png)
+![alt text](./src/image-10.png)
 
 아래 데이터를 보면 오른 쪽이 좀더 직접적인 연관이 있는 것으로 보인다.
 
-![alt text](image-11.png)
+![alt text](./src/image-11.png)
 
 
 Quantile transformation
@@ -48,7 +48,7 @@ Binning 연속된 범주를 범주형 변수로 바꾸는 방법
 - 넓고 얇은 다봉분포
 - Overfitting 방지
 
-![alt text](image-12.png)
+![alt text](./src/image-12.png)
 
 ## 범주형
 
@@ -56,7 +56,7 @@ Binning 연속된 범주를 범주형 변수로 바꾸는 방법
 
 1. One Hot encoding
 
-![alt text](image-13.png)
+![alt text](./src/image-13.png)
 
 0과 1로 만들기 있으면 1 없으면 0
 
@@ -64,19 +64,19 @@ Binning 연속된 범주를 범주형 변수로 바꾸는 방법
 
 2. Label encoding
 
-![alt text](image-14.png)
+![alt text](./src/image-14.png)
 
 3. Frequency Encoding
 
 값의 빈도수를 측정하는 방법
 
-![alt text](image-15.png)
+![alt text](./src/image-15.png)
 
 4. Target Encoding
 
 타겟 변수의 평균을 이용
 
-![alt text](image-16.png)
+![alt text](./src/image-16.png)
 
 동일값으로 encoding 되는 문제가 있다
 
@@ -94,7 +94,7 @@ Entity Embedding
 
 규칙적
 
-![alt text](image-17.png)
+![alt text](./src/image-17.png)
 
 Missing Data rule
 
@@ -114,12 +114,12 @@ Missing Data rule
 
 평균값 삽입과 같이 삽입으로 인한 문제가 발생 할 수 있음
 
-![alt text](image-18.png)
+![alt text](./src/image-18.png)
 
 
 결측치 비율
 
-![alt text](image-19.png)
+![alt text](./src/image-19.png)
 
 타겟간의 상간관계가 많이 떨어지게 됨
 
@@ -127,17 +127,17 @@ Missing Data rule
 
 ML을 통해 결측치를 체울수 있음
 
-![alt text](image-20.png)
+![alt text](./src/image-20.png)
 
 위쪽은 선형 모델 아래쪽은 KNN을 통해 결측치를 체움
 
 - 합리적 접근법
 
-![alt text](image-21.png)
+![alt text](./src/image-21.png)
 
 ## 이상치 처리
 
-![alt text](image-22.png)
+![alt text](./src/image-22.png)
 
 이상치 제거시 유사성이 없다는 것을 알수도 있고
 

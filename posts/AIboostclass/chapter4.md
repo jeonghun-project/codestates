@@ -5,13 +5,13 @@
 
 ### Early stopping
 
-![alt text](image-37.png)
+![alt text](./src/image-37.png)
 
 트레이드 오프
 
 ### Parameter norm penalty
 
-![alt text](image-38.png)
+![alt text](./src/image-38.png)
 
 L1 L2 패널티를 적용한게 overfitting을 방지 할 수 있다.
 
@@ -27,7 +27,7 @@ L1 L2 패널티를 적용한게 overfitting을 방지 할 수 있다.
 
 모든 데이터를 대상이 아닌 기준 데이터 부터 시작해서 그 근처에 데이터로 확장해 나가는 방식
 
-![alt text](image-39.png)
+![alt text](./src/image-39.png)
 
 ### Dropout
 
@@ -35,7 +35,7 @@ L1 L2 패널티를 적용한게 overfitting을 방지 할 수 있다.
 
 썩은 나무 자라지 못하는 나무를 가지치기하는 것과 유사
 
-![alt text](image-40.png)
+![alt text](./src/image-40.png)
 
 ## Validation strategy
 
@@ -63,15 +63,15 @@ Validation data가 정해준 나머지 모든 데이터
 
 ### Hold-out Validation
 
-![alt text](image-29.png)
+![alt text](./src/image-29.png)
 
 ### Stratified 
 
-![alt text](image-30.png)
+![alt text](./src/image-30.png)
 
 ### Cross Validation
 
-![alt text](image-23.png)
+![alt text](./src/image-23.png)
 
 여러 쌍의 train validation data set 을 설정하는 방법
 
@@ -81,25 +81,25 @@ Validation data가 정해준 나머지 모든 데이터
 
 #### Stratified K-Fold
 
-![alt text](image-24.png)
+![alt text](./src/image-24.png)
 
 비율로 나눈다 보통 8:2
 
 #### Group K-Fold
 
-![alt text](image-25.png)
+![alt text](./src/image-25.png)
 
 구룹이 폴드보다 커야함 겹치면 안됨
 
 ### Time series split
 
-![alt text](image-26.png)
+![alt text](./src/image-26.png)
 
 시계열 이전 시계열로 다음 시곋열을 예측 가능
 
 ### Baseline Stratified K-Fold
 
-![alt text](image-27.png)
+![alt text](./src/image-27.png)
 
 ## Repeoducobility 재현성
 
@@ -109,4 +109,4 @@ Validation data가 정해준 나머지 모든 데이터
 
 ## Machine learning wolkflow
 
-![alt text](image-28.png)
+![alt text](./src/image-28.png)

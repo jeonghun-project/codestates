@@ -31,16 +31,16 @@
 
 ### 연속형 변수
 
-![연속형](image-5.png)
+![연속형](./src/image-5.png)
 
 ### 범주형 변수
 
-![범주형](image-6.png)
+![범주형](./src/image-6.png)
 
 **변수간의 관계**
 
 타겟과 변수를 묶어서 보는 것이 중요하다
 
-![alt text](image-7.png)
+![alt text](./src/image-7.png)
 
 

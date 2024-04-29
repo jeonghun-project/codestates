@@ -11,7 +11,7 @@ Random forest = Bagging
 ### Bagging
 
 
-![](image-31.png)
+![ats](./src/image-31.png)
 
 Bagging = Booststrap + Aggregation
 
@@ -27,7 +27,7 @@ Booststrap:
 
 병렬 모델 / 다양한 Tree 생성
 
-![alt text](image-32.png)
+![alt text](./src/image-32.png)
 
 흰색은 무시
 
@@ -41,7 +41,7 @@ Booststrap:
 
 > LightGBM / XGBoost / CatBoost
 
-![alt text](image-33.png)
+![alt text](./src/image-33.png)
 
 트리가 성장하는 모습을 제안하여 한쪽으로 더욱 성장하도록 하는 방법이 있고 없고에 차이
 
@@ -49,15 +49,15 @@ Booststrap:
 
 사용하는 feature를 랜덤하게 선택하여 데이터가 오버피팅 되는것을 방지한다
 
-![alt text](image-34.png)
+![alt text](./src/image-34.png)
 
 이를 row를 기준으로 할 수 도 있다
 
-![alt text](image-35.png)
+![alt text](./src/image-35.png)
 
 이렇게 셈플링을 진행하여 새로운 트리를 연속하여 만들 수 있다.
 
 각종 파라미터를 조절할 수 있다.
 
-![alt text](image-36.png)
+![alt text](./src/image-36.png)
 
