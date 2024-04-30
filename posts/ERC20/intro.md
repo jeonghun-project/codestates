@@ -34,7 +34,7 @@ Ledger는 Ledger를 수정하기 위해 할 수 있는 일과 할수 없는 일�
 
 EVM Structure
 
-![alt text](image.png)
+![alt text](./src/image.png)
 
 ### EVM 동작 설명
 
