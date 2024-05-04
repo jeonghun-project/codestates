@@ -18,7 +18,6 @@
 
 EVM은 블록마다 새로운 유효한 상태를 계산하기 위한 규칙을 정의하고 있다.
 
-
 ### FROM LEDGER TO STATE MACHINE
 
 The ledger maintains a record of activity which must adhere to a set of rules that govern what someone can and cannot do to modify the ledger
@@ -35,13 +34,11 @@ Ledger는 Ledger를 수정하기 위해 할 수 있는 일과 할수 없는 일�
 
 EVM Structure
 
-![alt text](image.png)
+![alt text](./src/image.png)
 
 ### EVM 동작 설명
 
-
 - THE ETHEREUM STATE TRANSITION FUNCTION
-
 
 ```
 Y(S, T)= S'
@@ -52,11 +49,11 @@ Y(S, T)= S'
 내부 적으로는
 
 > [머클 트리](https://en.wikipedia.org/wiki/Merkle_tree)로 알려진 데이터 구조의 툭수 버전
-(Merkle Tree => [modified Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/))으로 인코딩된다.
+> (Merkle Tree => [modified Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/))으로 인코딩된다.
 >
 > 이 구조는 트리에 얽힌 개별 데이터 조각 사이에 검증 가능한 관계를 생성
 >
->데이터에 대한 내용을 증명하는 데 사용할 수 있는 단일 루트값을 생성하기에 암호화의 많은 응용 프로그램에 유용하다.
+> 데이터에 대한 내용을 증명하는 데 사용할 수 있는 단일 루트값을 생성하기에 암호화의 많은 응용 프로그램에 유용하다.
 
 차후에는 [Verkle Tree](https://ethereum.org/en/roadmap/verkle-trees/)로 마이그레이션 할 계획을 가지고 있다고 한다.
 
@@ -67,7 +64,6 @@ Y(S, T)= S'
 ### Transactions
 
 > Transaction은 계정에서 암호화된 방식으로 서명된 지침(instruction)이다.
-
 
 ```sol
 // SPDX-License-Identifier: MIT
@@ -121,11 +117,11 @@ import "openzeppelin-solidity/contracts/utils/math/SafeMath.sol";
 contract SimpleStaking is ERC20 {
     mapping(address => uint256) public staked;
     mapping(address => uint256) public stakedFromTS;
-  
+
     constructor() ERC20("Jaden Rich", "JR") {
         _mint(msg.sender, 10000* 10**18);
     }
-    
+
 
     function stake(uint256 amount) external  {
         require(amount > 0, "amount is <= 0");
@@ -146,7 +142,7 @@ contract SimpleStaking is ERC20 {
         staked[msg.sender] -= amount;
         _transfer(address(this), msg.sender, amount);
     }
-    
+
     function claim() public {
         require(staked[msg.sender] >0, "staked is <= 0");
         uint256 secondsStaked = block.timestamp - stakedFromTS[msg.sender];
@@ -164,25 +160,24 @@ contract SimpleStaking is ERC20 {
 
 기록이 진실되고 정직하다고 보장하는데 사용된다.
 
-
 ### What is consensus
 
 합의란 의견차이가 없이 동의 하는 것을 뜻하고 이더리움 블록체인은 프로세스가 공식적으로 있으며 합의에 도달한다는 것은 네트워크의 노드 중 최소 66%가 네트워크의 글로벌 상태에 동의한다는 것을 의미한다.
 
 - PoW(Proof-of-work)
 
-    거래데이터는 수학문제를 풀어서 검증된 블록에 저장된다.
-    흔히 Mining이라고 부르는 작업이 진행된다. 문제를 해결한 최초의 채굴자에게 보상이 지급되었다.
+  거래데이터는 수학문제를 풀어서 검증된 블록에 저장된다.
+  흔히 Mining이라고 부르는 작업이 진행된다. 문제를 해결한 최초의 채굴자에게 보상이 지급되었다.
 
-    비밀번호의 올바른 조합을 찾아내는 경쟁과 같은 것
+  비밀번호의 올바른 조합을 찾아내는 경쟁과 같은 것
 
 - PoS(Proof-of-Stack)
 
-    새 블록의 생성자는 네트워크 지분에 따라 검증인으로 설정되어 검증인으로서 참여한다.
+  새 블록의 생성자는 네트워크 지분에 따라 검증인으로 설정되어 검증인으로서 참여한다.
 
 - PoA(Proof-of-Authority)
 
-    수정된 지분증명 소수의 증명된 검증자들만이 검증을 진행한다.
+  수정된 지분증명 소수의 증명된 검증자들만이 검증을 진행한다.
 
 이러한 합의 알고리즘들을 복합적으로 사용하기도 한다.
 
